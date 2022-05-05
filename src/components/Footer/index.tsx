@@ -31,7 +31,7 @@ const Footer: React.FC<FooterProps> = ({
 					container
 					gap={5}
 					direction='row'
-					justifyContent='space-evenly'
+					justifyContent='space-between'
 					alignItems='flex-start'>
 					<BusinessInfo
 						taxNumber={taxNumber}
