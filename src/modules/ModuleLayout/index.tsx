@@ -1,7 +1,9 @@
 import { ReactNode } from "react";
-import Footer from "./Footer";
 
-import { FooterProps } from "./Footer/Footer.types";
+import Footer from "src/components/Footer";
+import Header from "src/components/Header";
+
+import { FooterProps } from "src/components/Footer/Footer.types";
 
 interface Props {
 	children: ReactNode;
@@ -11,6 +13,7 @@ interface Props {
 const Layout: React.FC<Props> = ({ children, footerProps }) => {
 	return (
 		<>
+			<Header />
 			{children}
 			<Footer {...footerProps} />
 		</>
