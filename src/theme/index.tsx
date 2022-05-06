@@ -20,7 +20,7 @@ const ThemeProvider = ({ children }: Props) => {
 		() => ({
 			palette,
 			typography,
-			shadows: new Array(25).map(() => "none") as Shadows,
+			shadows: Array.from(new Array(25), (val, i) => "none") as Shadows,
 			components,
 		}),
 		[],
