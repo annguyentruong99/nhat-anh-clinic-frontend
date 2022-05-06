@@ -22,7 +22,7 @@ const ContactInfo: React.FC<Props> = ({ address, phone, email }) => {
 			alignItems='flex-start'
 			xs={12}
 			md={6}
-			lg={2}>
+			lg={3}>
 			<Typography
 				sx={{ color: "warning.main", fontWeight: 700 }}
 				variant='body1'>

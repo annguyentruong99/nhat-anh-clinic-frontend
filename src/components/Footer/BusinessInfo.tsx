@@ -19,7 +19,7 @@ const BusinessInfo: React.FC<Props> = ({ taxNumber, commerceLicense }) => {
 			alignItems='flex-start'
 			xs={12}
 			md={6}
-			lg={2}>
+			lg={3}>
 			<Typography
 				sx={{ color: "grey.0", fontWeight: 700, marginBottom: "16px" }}
 				variant='body1'>
