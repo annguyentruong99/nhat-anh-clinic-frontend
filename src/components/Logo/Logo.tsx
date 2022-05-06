@@ -4,7 +4,7 @@ import Link from "next/link";
 import LogoImg from "public/assets/logo.png";
 
 const Logo = () => (
-	<Link href='/'>
+	<Link href='/' passHref>
 		<Image src={LogoImg} alt='PKDK Nhật Anh Logo' />
 	</Link>
 );
