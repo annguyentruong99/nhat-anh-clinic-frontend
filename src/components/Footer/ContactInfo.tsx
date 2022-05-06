@@ -30,22 +30,28 @@ const ContactInfo: React.FC<Props> = ({ address, phone, email }) => {
 			</Typography>
 
 			<span style={{ display: "flex" }}>
-				<Location />
-				<Typography sx={{ color: "grey.0", ml: "8px" }} variant='body2'>
+				<span>
+					<Location />
+				</span>
+				<Typography sx={{ color: "grey.0", pl: "8px" }} variant='body2'>
 					{address}
 				</Typography>
 			</span>
 
 			<span style={{ display: "flex" }}>
-				<Phone />
-				<Typography sx={{ color: "grey.0", ml: "8px" }} variant='body2'>
+				<span>
+					<Phone />
+				</span>
+				<Typography sx={{ color: "grey.0", pl: "8px" }} variant='body2'>
 					{phone}
 				</Typography>
 			</span>
 
 			<span style={{ display: "flex" }}>
-				<Email />
-				<Typography sx={{ color: "grey.0", ml: "8px" }} variant='body2'>
+				<span>
+					<Email />
+				</span>
+				<Typography sx={{ color: "grey.0", pl: "8px" }} variant='body2'>
 					{email}
 				</Typography>
 			</span>

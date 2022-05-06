@@ -29,7 +29,7 @@ const Footer: React.FC<FooterProps> = ({
 			<Container>
 				<Grid
 					container
-					gap={5}
+					gap={4}
 					direction='row'
 					justifyContent='space-between'
 					alignItems='flex-start'>

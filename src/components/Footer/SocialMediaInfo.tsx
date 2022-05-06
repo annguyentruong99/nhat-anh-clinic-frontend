@@ -16,7 +16,7 @@ const SocialMediaInfo: React.FC<Props> = ({ facebook, instagram }) => {
 			alignItems='flex-start'
 			xs={12}
 			md={6}
-			lg={2}>
+			lg={3}>
 			<Typography
 				sx={{ color: "warning.main", fontWeight: 700 }}
 				variant='body1'>
