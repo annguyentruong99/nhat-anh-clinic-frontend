@@ -1,4 +1,10 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
+const withGraphql = require("next-plugin-graphql");
 
-module.exports = nextConfig
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+	webpack(config) {
+		return config;
+	},
+};
+
+module.exports = withGraphql(nextConfig);

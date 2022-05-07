@@ -1,18 +1,18 @@
 export const footerLinks = [
 	{
 		title: "Giới thiệu",
-		href: "",
+		href: "/our-team",
 	},
 	{
 		title: "Đăng kí và tư vấn",
-		href: "",
+		href: "/sign-up",
 	},
 	{
 		title: "Các dịch vụ",
-		href: "",
+		href: "/services",
 	},
 	{
 		title: "Hướng dẫn khách hàng",
-		href: "",
+		href: "/",
 	},
 ];
