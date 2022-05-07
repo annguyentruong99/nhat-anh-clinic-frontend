@@ -10,14 +10,23 @@ query HomePage {
 					seoDesc
 				}
 				modules {
-					... on ComponentModulesBanner {
-						title
+					... on ComponentModulesHeroBanner {
+						title {
+							title1
+							title2
+						}
 						description
 						subtitle
+						cover {
+							data {
+								attributes {
+									url
+								}
+							}
+						}
 						cta {
-							buttonContent
+							content
 							link
-							variant
 						}
 					}
 				}
