@@ -1,0 +1,27 @@
+query HomePage {
+	page(id: 1) {
+		data {
+			id
+			attributes {
+				title
+				slug
+				seo {
+					seoTitle
+					seoDesc
+				}
+				modules {
+					... on ComponentModulesBanner {
+						title
+						description
+						subtitle
+						cta {
+							buttonContent
+							link
+							variant
+						}
+					}
+				}
+			}
+		}
+	}
+}
