@@ -70,10 +70,3 @@ export const CtaContainer = styled("div")(({ theme }) => ({
 		width: "40%",
 	},
 }));
-
-export const HeroImageContainer = styled("div")(({ theme }) => ({
-	position: "relative",
-	marginTop: "84px",
-	overflow: "hidden",
-	width: "358px",
-}));
