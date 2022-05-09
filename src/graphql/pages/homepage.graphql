@@ -29,6 +29,13 @@ query HomePage {
 							link
 						}
 					}
+					... on ComponentModulesServicesSlider {
+						__typename
+						heading {
+							title
+							subtitle
+						}
+					}
 				}
 			}
 		}
