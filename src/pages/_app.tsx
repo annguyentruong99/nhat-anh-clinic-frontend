@@ -4,7 +4,7 @@ import { ApolloProvider } from "@apollo/client";
 import Head from "next/head";
 import React from "react";
 import ThemeProvider from "src/theme";
-import Layout from "src/modules/ModuleLayout";
+import Layout from "src/components/Layout";
 
 const App = ({ Component, pageProps }: AppProps) => {
 	const apolloClient = useApollo(pageProps);
