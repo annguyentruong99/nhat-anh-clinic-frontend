@@ -1,3 +1,5 @@
+import "swiper/css";
+import "swiper/css/scrollbar";
 import type { AppProps } from "next/app";
 import { useApollo } from "../lib/apolloClient";
 import { ApolloProvider } from "@apollo/client";
