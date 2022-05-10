@@ -89,7 +89,7 @@ const DoctorsCarousel: React.FC<Props> = ({
 			},
 			"@1.00": {
 				slidesPerView: 3,
-				spaceBetween: 15,
+				spaceBetween: 13,
 			},
 		},
 		watchOverflow: true,
