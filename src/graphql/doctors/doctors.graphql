@@ -1,0 +1,13 @@
+query Doctors {
+	doctors {
+		data {
+			attributes {
+				slug
+				role
+				title
+				name
+				description
+			}
+		}
+	}
+}
