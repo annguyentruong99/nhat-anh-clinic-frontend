@@ -8,10 +8,10 @@ export const StyledCard = styled(Card)(({ theme }) => ({
 	display: "block",
 	border: `1px solid ${theme.palette.grey[200]}`,
 	width: "300px",
-	height: "550px",
+	height: "548px",
 
 	[theme.breakpoints.up("md")]: {
-		width: "405px",
+		width: "367px",
 	},
 }));
 
