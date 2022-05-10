@@ -1,18 +1,25 @@
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import { initializeApollo } from "src/lib/apolloClient";
-import { HomePageDocument, ServicesDocument } from "src/__generated__/types";
+import {
+	HomePageDocument,
+	ServicesDocument,
+	DoctorsDocument,
+} from "src/__generated__/types";
 
 import ModuleHeroBanner from "src/modules/ModuleHeroBanner";
 import ModuleServicesSlider from "src/modules/ModuleServicesSlider";
+import ModuleDoctorsSlider from "src/modules/ModuleDoctorsSlider";
 
 const modulesMap: { [module: string]: string } = {
 	ModuleHeroBanner: "ComponentModulesHeroBanner",
 	ModuleServicesSlider: "ComponentModulesServicesSlider",
+	ModuleDoctorsSlider: "ComponentModulesDoctorsSlider",
 };
 
 const Home = ({
 	pageData,
 	services,
+	doctors,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
 	const { modules } = pageData;
 
@@ -32,7 +39,16 @@ const Home = ({
 							module.__typename === modulesMap[ModuleServicesSlider.name],
 					)[0]
 				}
-				services={services}
+				services={services?.data?.services}
+			/>
+			<ModuleDoctorsSlider
+				moduleProps={
+					modules.filter(
+						(module) =>
+							module.__typename === modulesMap[ModuleDoctorsSlider.name],
+					)[0]
+				}
+				doctors={doctors?.data?.doctors}
 			/>
 		</div>
 	);
@@ -48,11 +64,17 @@ export const getStaticProps: GetStaticProps = async () => {
 		.query({ query: ServicesDocument })
 		.then((res) => res);
 
+	const doctors = await apolloClient
+		.query({ query: DoctorsDocument })
+		.then((res) => res);
+
 	return {
 		props: {
 			pageData: pageData?.data?.page?.data?.attributes,
-			services: services?.data?.services,
+			services,
+			doctors,
 		},
+		revalidate: 1800, // 30 mins
 	};
 };
 
