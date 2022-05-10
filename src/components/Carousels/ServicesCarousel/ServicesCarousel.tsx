@@ -7,8 +7,8 @@ import {
 	NavigationContainer,
 	HideInMobile,
 } from "./styles";
-import RightArrow from "../icons/RightArrow";
-import LeftArrow from "../icons/LeftArrow";
+import RightArrow from "../../icons/RightArrow";
+import LeftArrow from "../../icons/LeftArrow";
 import ServiceCard from "src/components/ServiceCard";
 
 import { SxProps, Theme, useMediaQuery, useTheme } from "@mui/material";
