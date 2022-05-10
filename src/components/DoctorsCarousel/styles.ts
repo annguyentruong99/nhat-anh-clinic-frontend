@@ -10,7 +10,7 @@ export const NavigationContainer = styled("div")(({ theme }) => ({
 	display: "flex",
 	position: "absolute",
 	bottom: "10%",
-	left: "90%",
+	left: "91.5%",
 	zIndex: 100,
 }));
 
@@ -32,7 +32,6 @@ export const navigationButtonStyles: SxProps<Theme> = {
 	justifyContent: "center",
 	alignItems: "center",
 	cursor: "pointer",
-	marginRight: "8px",
 
 	"&:hover": {
 		backgroundColor: (theme) => theme.palette.primary.darker,

@@ -118,7 +118,9 @@ const ServicesCarousel: React.FC<Props> = ({
 			</Swiper>
 			<HideInMobile>
 				<NavigationContainer>
-					<Box sx={{ ...navigationButtonStyles }} onClick={slidePrev}>
+					<Box
+						sx={{ ...navigationButtonStyles, marginRight: "8px" }}
+						onClick={slidePrev}>
 						<LeftArrow />
 					</Box>
 					<Box sx={{ ...navigationButtonStyles }} onClick={slideNext}>

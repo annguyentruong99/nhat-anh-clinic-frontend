@@ -11,7 +11,7 @@ export const StyledCard = styled(Card)(({ theme }) => ({
 	height: "548px",
 
 	[theme.breakpoints.up("md")]: {
-		width: "367px",
+		width: "375px",
 	},
 }));
 

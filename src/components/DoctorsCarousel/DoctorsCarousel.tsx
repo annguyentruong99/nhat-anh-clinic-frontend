@@ -57,7 +57,7 @@ const DoctorsCarousel: React.FC<Props> = ({
 			height: "600px",
 			"& .swiper-wrapper": {
 				"& .swiper-slide": {
-					width: { lg: "fit-content !important" },
+					width: { md: "fit-content !important" },
 				},
 			},
 			"& .swiper-scrollbar": {
@@ -89,7 +89,7 @@ const DoctorsCarousel: React.FC<Props> = ({
 			},
 			"@1.00": {
 				slidesPerView: 3,
-				spaceBetween: 13,
+				spaceBetween: 10,
 			},
 		},
 		watchOverflow: true,
@@ -122,7 +122,9 @@ const DoctorsCarousel: React.FC<Props> = ({
 			</Swiper>
 			<HideInMobile>
 				<NavigationContainer>
-					<Box sx={{ ...navigationButtonStyles }} onClick={slidePrev}>
+					<Box
+						sx={{ ...navigationButtonStyles, marginRight: "8px" }}
+						onClick={slidePrev}>
 						<LeftArrow />
 					</Box>
 					<Box sx={{ ...navigationButtonStyles }} onClick={slideNext}>

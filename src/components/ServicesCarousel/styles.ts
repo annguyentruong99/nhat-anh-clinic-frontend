@@ -32,7 +32,6 @@ export const navigationButtonStyles: SxProps<Theme> = {
 	justifyContent: "center",
 	alignItems: "center",
 	cursor: "pointer",
-	marginRight: "8px",
 
 	"&:hover": {
 		backgroundColor: (theme) => theme.palette.primary.darker,
