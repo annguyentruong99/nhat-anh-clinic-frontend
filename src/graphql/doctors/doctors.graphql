@@ -7,6 +7,13 @@ query Doctors {
 				title
 				name
 				description
+				cover {
+					data {
+						attributes {
+							url
+						}
+					}
+				}
 			}
 		}
 	}
