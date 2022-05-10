@@ -36,7 +36,7 @@ export const Highlight = styled(Typography)(({ theme }) => ({
 }));
 
 export const StyledList = styled(List)(({ theme }) => ({
-	minHeight: "68px",
+	minHeight: "84px",
 	marginTop: "8px",
 }));
 
