@@ -4,10 +4,6 @@ import Box from "@mui/material/Box";
 
 export const CarouselContainer = styled("div")(({ theme }) => ({
 	marginTop: "24px",
-
-	[theme.breakpoints.up("md")]: {
-		marginTop: "16px",
-	},
 }));
 
 export const NavigationContainer = styled("div")(({ theme }) => ({
