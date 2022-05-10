@@ -18,7 +18,6 @@ import {
 	Title2,
 	Description,
 	CtaContainer,
-	HeroImageContainer,
 } from "./styles";
 
 const ImageText: React.FC<ModuleProps> = ({
@@ -33,8 +32,8 @@ const ImageText: React.FC<ModuleProps> = ({
 			sx={{
 				backgroundImage: `url(http://localhost:1337${cover.data?.attributes?.url})`,
 				backgroundRepeat: "no-repeat",
-				backgroundPosition: { xs: "bottom center", lg: "bottom right" },
-				backgroundSize: { xs: "380px 340px", lg: "auto" },
+				backgroundPosition: { xs: "70% 100%", md: "50% 100%", lg: "85% 100%" },
+				backgroundSize: { xs: "500px 310px", lg: "auto" },
 			}}>
 			<Container>
 				<Grid container direction='row' alignItems='center'>
