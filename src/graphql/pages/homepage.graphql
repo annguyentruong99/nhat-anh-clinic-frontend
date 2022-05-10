@@ -36,6 +36,13 @@ query HomePage {
 							subtitle
 						}
 					}
+					... on ComponentModulesDoctorsSlider {
+						__typename
+						heading {
+							title
+							subtitle
+						}
+					}
 				}
 			}
 		}
