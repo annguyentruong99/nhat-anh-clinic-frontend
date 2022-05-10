@@ -1,6 +1,5 @@
+import { Headings } from "src/typings/common.types";
+
 export type ModuleProps = {
-	heading: {
-		title: string;
-		subtitle?: string;
-	};
+	heading: Headings;
 };
