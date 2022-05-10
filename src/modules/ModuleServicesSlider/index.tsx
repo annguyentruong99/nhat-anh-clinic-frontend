@@ -17,7 +17,7 @@ const ModuleServicesSlider: React.FC<Props> = ({
 }) => {
 	return (
 		<Box>
-			<Container sx={{ overflow: "visible" }}>
+			<Container>
 				<SectionHeading heading={heading} />
 				<ServicesCarousel services={services} />
 			</Container>
