@@ -2,10 +2,9 @@ import SectionHeading from "src/components/SectionHeading";
 import { StyledBox } from "./styles";
 
 import Container from "@mui/material/Container";
-
 import { ModuleProps } from "./ModuleServicesSlider.types";
 import { Services } from "src/typings/services.types";
-import ServiceCard from "src/components/ServiceCard";
+import ServicesCarousel from "src/components/ServicesCarousel";
 
 interface Props {
 	moduleProps: ModuleProps;
@@ -14,19 +13,13 @@ interface Props {
 
 const ModuleServicesSlider: React.FC<Props> = ({
 	moduleProps: { heading },
-	services: { data: services },
+	services,
 }) => {
 	return (
 		<StyledBox>
-			<Container>
+			<Container sx={{ overflow: "visible" }}>
 				<SectionHeading heading={heading} />
-				{services.map((service, ind) => (
-					<ServiceCard
-						key={service.attributes.name}
-						service={service}
-						index={ind + 1}
-					/>
-				))}
+				<ServicesCarousel services={services} />
 			</Container>
 		</StyledBox>
 	);
