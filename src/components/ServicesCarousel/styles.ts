@@ -1,5 +1,6 @@
 import { styled } from "@mui/material/styles";
 import { SxProps, Theme } from "@mui/material";
+import Box from "@mui/material/Box";
 
 export const CarouselContainer = styled("div")(({ theme }) => ({
 	marginTop: "24px",
