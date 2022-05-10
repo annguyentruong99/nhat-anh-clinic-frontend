@@ -1,3 +1,5 @@
+import { Cover } from "./common.types";
+
 export interface Doctors {
 	data: {
 		attributes: {
@@ -6,6 +8,7 @@ export interface Doctors {
 			name: string;
 			slug: string;
 			description: string;
+			cover: Cover;
 		};
 	};
 }
