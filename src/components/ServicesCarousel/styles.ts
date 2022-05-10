@@ -17,6 +17,16 @@ export const NavigationContainer = styled("div")(({ theme }) => ({
 	zIndex: 100,
 }));
 
+export const HideInMobile = styled(Box)(({ theme }) => ({
+	display: "none",
+
+	[theme.breakpoints.up("md")]: {
+		display: "inline-block",
+		position: "relative",
+		width: "100%",
+	},
+}));
+
 export const navigationButtonStyles: SxProps<Theme> = {
 	width: "44px",
 	height: "44px",

@@ -5,8 +5,8 @@ import {
 	CarouselContainer,
 	navigationButtonStyles,
 	NavigationContainer,
+	HideInMobile,
 } from "./styles";
-import { HideInMobile } from "src/theme/common";
 import RightArrow from "../icons/RightArrow";
 import LeftArrow from "../icons/LeftArrow";
 import ServiceCard from "src/components/ServiceCard";
