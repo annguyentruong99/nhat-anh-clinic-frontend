@@ -10,5 +10,5 @@ export interface Doctors {
 			description: string;
 			cover: Cover;
 		};
-	};
+	}[];
 }
