@@ -31,16 +31,40 @@ query HomePage {
 					}
 					... on ComponentModulesServicesSlider {
 						__typename
-						heading {
+						servicesSliderHeading: heading {
 							title
 							subtitle
 						}
 					}
 					... on ComponentModulesDoctorsSlider {
 						__typename
-						heading {
+						doctorsSliderHeading: heading {
 							title
 							subtitle
+						}
+					}
+					... on ComponentModulesWhyChooseUs {
+						__typename
+						backgroundImage {
+							data {
+								attributes {
+									url
+								}
+							}
+						}
+						whyChooseUsHeading: heading {
+							title
+						}
+						imageText {
+							cover {
+								data {
+									attributes {
+										url
+									}
+								}
+							}
+							title
+							description
 						}
 					}
 				}
