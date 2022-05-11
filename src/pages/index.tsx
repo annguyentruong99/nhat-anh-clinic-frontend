@@ -9,11 +9,13 @@ import {
 import ModuleHeroBanner from "src/modules/ModuleHeroBanner";
 import ModuleServicesSlider from "src/modules/ModuleServicesSlider";
 import ModuleDoctorsSlider from "src/modules/ModuleDoctorsSlider";
+import ModuleWhyChooseUs from "src/modules/ModuleWhyChooseUs";
 
 const modulesMap: { [module: string]: string } = {
 	ModuleHeroBanner: "ComponentModulesHeroBanner",
 	ModuleServicesSlider: "ComponentModulesServicesSlider",
 	ModuleDoctorsSlider: "ComponentModulesDoctorsSlider",
+	ModuleWhyChooseUs: "ComponentModulesWhyChooseUs",
 };
 
 const Home = ({
@@ -49,6 +51,14 @@ const Home = ({
 					)[0]
 				}
 				doctors={doctors?.data?.doctors}
+			/>
+			<ModuleWhyChooseUs
+				moduleProps={
+					modules.filter(
+						(module) =>
+							module.__typename === modulesMap[ModuleWhyChooseUs.name],
+					)[0]
+				}
 			/>
 		</div>
 	);
