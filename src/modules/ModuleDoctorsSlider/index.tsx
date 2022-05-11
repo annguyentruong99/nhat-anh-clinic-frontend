@@ -12,13 +12,13 @@ interface Props {
 }
 
 const ModuleDoctorsSlider: React.FC<Props> = ({
-	moduleProps: { heading },
+	moduleProps: { doctorsSliderHeading },
 	doctors,
 }) => {
 	return (
 		<StyledBox>
 			<Container>
-				<SectionHeading heading={heading} />
+				<SectionHeading heading={doctorsSliderHeading} />
 				<DoctorsCarousel doctors={doctors} />
 			</Container>
 		</StyledBox>
