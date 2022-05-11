@@ -1,3 +1,5 @@
+import { Cover } from "./common.types";
+
 export type ServiceTypes =
 	| "kham_chuyen_khoa"
 	| "Kham_ki_thuat"
@@ -9,13 +11,7 @@ export interface Services {
 			name: string;
 			type: ServiceTypes;
 			slug: string;
-			cover: {
-				data: {
-					attributes: {
-						url: string;
-					};
-				};
-			};
+			cover: Cover;
 			highlights: {
 				text: string;
 			}[];

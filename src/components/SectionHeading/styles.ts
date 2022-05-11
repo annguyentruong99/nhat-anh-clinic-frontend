@@ -15,6 +15,7 @@ export const StyledBox = styled(Box)(({ theme }) => ({
 }));
 
 export const Subtitle = styled(Typography)(({ theme }) => ({
+	color: theme.palette.grey[400],
 	[theme.breakpoints.up("md")]: {
 		textAlign: "center",
 		width: "55%",

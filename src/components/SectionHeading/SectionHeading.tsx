@@ -1,12 +1,10 @@
 import Typography from "@mui/material/Typography";
 
 import { StyledBox, Subtitle } from "./styles";
+import { Headings } from "src/typings/common.types";
 
 interface Props {
-	heading: {
-		title: string;
-		subtitle?: string;
-	};
+	heading: Headings;
 	titleColor?: string;
 }
 

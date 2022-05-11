@@ -9,19 +9,19 @@ import {
 } from "./styles";
 import RightArrow from "../icons/RightArrow";
 import LeftArrow from "../icons/LeftArrow";
-import ServiceCard from "src/components/ServiceCard";
 
 import { SxProps, Theme, useMediaQuery, useTheme } from "@mui/material";
 import Box from "@mui/material/Box";
 import { useEffect, useRef, useState } from "react";
-import { Services } from "src/typings/services.types";
+import { Doctors } from "src/typings/doctors.types";
+import DoctorCard from "../DoctorCard";
 
 interface Props {
-	services: Services;
+	doctors: Doctors;
 }
 
-const ServicesCarousel: React.FC<Props> = ({
-	services: { data: servicesData },
+const DoctorsCarousel: React.FC<Props> = ({
+	doctors: { data: doctorsData },
 }) => {
 	const theme = useTheme();
 	const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
@@ -29,16 +29,16 @@ const ServicesCarousel: React.FC<Props> = ({
 	const [swiper, setSwiper] = useState(null);
 
 	useEffect(() => {
-		setSwiper(document.querySelector(".services-carousel")?.swiper);
+		setSwiper(document.querySelector(".doctors-carousel")?.swiper);
 	}, []);
 
 	const [slides, setSlides] = useState(
-		servicesData.map((service, ind) => (
-			<ServiceCard key={ind} service={service} index={ind + 1} />
+		doctorsData.map((doctor, ind) => (
+			<DoctorCard key={ind} doctor={doctor} index={ind + 1} />
 		)),
 	);
 
-	const appendNumber = useRef(servicesData.length);
+	const appendNumber = useRef(doctorsData.length);
 
 	const appendSlide = () => {
 		setSlides([...slides, <span key={++appendNumber.current}></span>]);
@@ -54,8 +54,12 @@ const ServicesCarousel: React.FC<Props> = ({
 
 	const paginationStyles: SxProps<Theme> = {
 		"& .swiper": {
-			height: "565px",
-
+			height: "600px",
+			"& .swiper-wrapper": {
+				"& .swiper-slide": {
+					width: { md: "fit-content !important" },
+				},
+			},
 			"& .swiper-scrollbar": {
 				width: "88px",
 				backgroundColor: (theme) => theme.palette.grey[100],
@@ -80,12 +84,12 @@ const ServicesCarousel: React.FC<Props> = ({
 				spaceBetween: 100,
 			},
 			"@0.80": {
-				slidesPerView: 3,
+				slidesPerView: 2,
 				spaceBetween: 35,
 			},
 			"@1.00": {
 				slidesPerView: 3,
-				spaceBetween: 100,
+				spaceBetween: 10,
 			},
 		},
 		watchOverflow: true,
@@ -101,7 +105,7 @@ const ServicesCarousel: React.FC<Props> = ({
 				appendSlide();
 			}
 		},
-		className: "services-carousel",
+		className: "doctors-carousel",
 	};
 
 	return (
@@ -110,7 +114,7 @@ const ServicesCarousel: React.FC<Props> = ({
 				...paginationStyles,
 			}}>
 			<Swiper {...swiperProps}>
-				{slides.slice(0, servicesData.length + 1).map((slide, ind) => (
+				{slides.slice(0, doctorsData.length + 1).map((slide, ind) => (
 					<SwiperSlide virtualIndex={ind} key={ind}>
 						{slide}
 					</SwiperSlide>
@@ -132,4 +136,4 @@ const ServicesCarousel: React.FC<Props> = ({
 	);
 };
 
-export default ServicesCarousel;
+export default DoctorsCarousel;

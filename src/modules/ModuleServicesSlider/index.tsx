@@ -1,10 +1,10 @@
 import SectionHeading from "src/components/SectionHeading";
-import { StyledBox } from "./styles";
+import ServicesCarousel from "src/components/ServicesCarousel";
+import { Services } from "src/typings/services.types";
+import { ModuleProps } from "./ModuleServicesSlider.types";
 
 import Container from "@mui/material/Container";
-import { ModuleProps } from "./ModuleServicesSlider.types";
-import { Services } from "src/typings/services.types";
-import ServicesCarousel from "src/components/ServicesCarousel";
+import Box from "@mui/material/Box";
 
 interface Props {
 	moduleProps: ModuleProps;
@@ -16,12 +16,12 @@ const ModuleServicesSlider: React.FC<Props> = ({
 	services,
 }) => {
 	return (
-		<StyledBox>
-			<Container sx={{ overflow: "visible" }}>
+		<Box>
+			<Container>
 				<SectionHeading heading={heading} />
 				<ServicesCarousel services={services} />
 			</Container>
-		</StyledBox>
+		</Box>
 	);
 };
 
