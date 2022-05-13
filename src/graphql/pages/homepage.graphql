@@ -78,7 +78,6 @@ query HomePage {
 								data {
 									attributes {
 										url
-										alternativeText
 									}
 								}
 							}
