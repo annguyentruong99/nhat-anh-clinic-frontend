@@ -67,6 +67,24 @@ query HomePage {
 							description
 						}
 					}
+					... on ComponentModulesAchievements {
+						__typename
+						title {
+							title1
+							title2
+						}
+						achievements {
+							icon {
+								data {
+									attributes {
+										url
+									}
+								}
+							}
+							title
+							description
+						}
+					}
 				}
 			}
 		}
