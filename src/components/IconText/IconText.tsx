@@ -20,7 +20,12 @@ const IconText: React.FC<Props> = ({
 	return (
 		<IconTextContainer>
 			<IconContainer>
-				<Image src={url} alt='achievements-icon' />
+				<Image
+					src={`http://localhost:1337${url}`}
+					alt='achievements-icon'
+					width={56}
+					height={56}
+				/>
 			</IconContainer>
 			<Title variant='h1'>{title}</Title>
 			<Description variant='body2'>{description}</Description>
