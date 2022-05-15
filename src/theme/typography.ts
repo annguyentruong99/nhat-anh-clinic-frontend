@@ -9,7 +9,6 @@ const typography = {
 		fontWeight: 700,
 		fontSize: pxToRem(34),
 		lineHeight: pxToRem(48),
-		letterSpacing: 2,
 	},
 	h2: {
 		fontFamily: FONT_PRIMARY,

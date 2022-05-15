@@ -84,6 +84,13 @@ query HomePage {
 							title
 							description
 						}
+						cover {
+							data {
+								attributes {
+									url
+								}
+							}
+						}
 					}
 				}
 			}
