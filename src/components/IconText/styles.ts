@@ -7,11 +7,13 @@ export const IconTextContainer = styled(Box)(({ theme }) => ({
 	flexDirection: "column",
 	justifyContent: "start",
 	width: "fit-content",
+	marginBottom: "40px",
 }));
 
 export const IconContainer = styled("span")({
 	width: "56px",
 	height: "56px",
+	marginBottom: "10px",
 });
 
 export const Title = styled(Typography)(({ theme }) => ({
