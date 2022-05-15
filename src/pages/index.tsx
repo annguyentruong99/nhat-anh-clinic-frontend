@@ -10,12 +10,14 @@ import ModuleHeroBanner from "src/modules/ModuleHeroBanner";
 import ModuleServicesSlider from "src/modules/ModuleServicesSlider";
 import ModuleDoctorsSlider from "src/modules/ModuleDoctorsSlider";
 import ModuleWhyChooseUs from "src/modules/ModuleWhyChooseUs";
+import ModuleAchievements from "src/modules/ModuleAchievements";
 
 const modulesMap: { [module: string]: string } = {
 	ModuleHeroBanner: "ComponentModulesHeroBanner",
 	ModuleServicesSlider: "ComponentModulesServicesSlider",
 	ModuleDoctorsSlider: "ComponentModulesDoctorsSlider",
 	ModuleWhyChooseUs: "ComponentModulesWhyChooseUs",
+	ModuleAchievements: "ComponentModulesAchievements",
 };
 
 const Home = ({
@@ -57,6 +59,14 @@ const Home = ({
 					modules.filter(
 						(module) =>
 							module.__typename === modulesMap[ModuleWhyChooseUs.name],
+					)[0]
+				}
+			/>
+			<ModuleAchievements
+				moduleProps={
+					modules.filter(
+						(module) =>
+							module.__typename === modulesMap[ModuleAchievements.name],
 					)[0]
 				}
 			/>
