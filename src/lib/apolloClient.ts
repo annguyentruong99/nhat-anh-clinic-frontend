@@ -77,7 +77,7 @@ export const initializeApollo = (
 	if (initialState) {
 		const existingCache = _apolloClient.extract();
 
-		const data = merge(initialState, existingCache, {
+		const data = merge(initialState, existingCache!, {
 			arrayMerge: (destinationArray, sourceArray) => [
 				...sourceArray,
 				...destinationArray.filter((d) =>

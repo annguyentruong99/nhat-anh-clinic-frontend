@@ -1,0 +1,21 @@
+query Services {
+	services {
+		data {
+			attributes {
+				name
+				type
+				slug
+				cover {
+					data {
+						attributes {
+							url
+						}
+					}
+				}
+				highlights {
+					text
+				}
+			}
+		}
+	}
+}

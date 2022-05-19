@@ -1,0 +1,20 @@
+query Doctors {
+	doctors {
+		data {
+			attributes {
+				slug
+				role
+				title
+				name
+				description
+				cover {
+					data {
+						attributes {
+							url
+						}
+					}
+				}
+			}
+		}
+	}
+}
