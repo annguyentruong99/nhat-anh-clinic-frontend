@@ -53,6 +53,8 @@ const DoctorsCarousel: React.FC<Props> = ({
 	};
 
 	const paginationStyles: SxProps<Theme> = {
+		marginBottom: "80px",
+
 		"& .swiper": {
 			height: "600px",
 			"& .swiper-wrapper": {

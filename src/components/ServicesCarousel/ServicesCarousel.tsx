@@ -80,12 +80,12 @@ const ServicesCarousel: React.FC<Props> = ({
 				spaceBetween: 100,
 			},
 			"@0.80": {
-				slidesPerView: 3,
+				slidesPerView: 2,
 				spaceBetween: 35,
 			},
 			"@1.00": {
 				slidesPerView: 3,
-				spaceBetween: 100,
+				spaceBetween: 10,
 			},
 		},
 		watchOverflow: true,

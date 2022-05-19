@@ -8,8 +8,12 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 
 export const StyledCard = styled(Card)(({ theme }) => ({
-	width: "298px",
+	width: "300px",
 	border: `1px solid ${theme.palette.grey[200]}`,
+
+	[theme.breakpoints.up("md")]: {
+		width: "375px",
+	},
 }));
 
 export const StyledCardContent = styled(CardContent)({
