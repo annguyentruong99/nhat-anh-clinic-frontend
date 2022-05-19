@@ -1,0 +1,18 @@
+query Posts {
+	posts {
+		data {
+			attributes {
+				title
+				slug
+				cover {
+					data {
+						attributes {
+							url
+						}
+					}
+				}
+				content
+			}
+		}
+	}
+}

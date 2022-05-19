@@ -92,6 +92,12 @@ query HomePage {
 							}
 						}
 					}
+					... on ComponentModulesBlogTabs {
+						blogTabsHeading: heading {
+							title
+							subtitle
+						}
+					}
 				}
 			}
 		}
