@@ -1,5 +1,6 @@
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
 
 export const StyledBox = styled(Box)(({ theme }) => ({
 	backgroundSize: "cover",
@@ -11,14 +12,10 @@ export const StyledBox = styled(Box)(({ theme }) => ({
 	paddingBottom: "",
 }));
 
-export const ImageTextContainer = styled("span")(({ theme }) => ({
-	display: "flex",
-	flexDirection: "column",
-	justifyContent: "space-between",
+export const ImageTextContainer = styled(Grid)(({ theme }) => ({
 	padding: "24px 0 18px 0",
 
 	[theme.breakpoints.up("lg")]: {
 		padding: "60px 0 80px 0",
-		flexDirection: "row",
 	},
 }));

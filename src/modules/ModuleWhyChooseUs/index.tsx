@@ -3,6 +3,7 @@ import { ModuleProps } from "./ModuleWhyChooseUs.types";
 import ImageText from "src/components/ImageText";
 import { StyledBox, ImageTextContainer } from "./styles";
 
+import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 
 interface Props {
@@ -22,14 +23,15 @@ const ModuleWhyChooseUs: React.FC<Props> = ({
 				titleColor='white'
 				align='center'
 			/>
-			<ImageTextContainer>
+			<ImageTextContainer container>
 				{imageText.map((item) => (
-					<ImageText
-						key={item.title}
-						title={item.title}
-						cover={`http://localhost:1337${item.cover.data.attributes.url}`}
-						description={item.description}
-					/>
+					<Grid key={item.title} item xs={12} md={6} lg={3}>
+						<ImageText
+							title={item.title}
+							cover={`http://localhost:1337${item.cover.data.attributes.url}`}
+							description={item.description}
+						/>
+					</Grid>
 				))}
 			</ImageTextContainer>
 		</Container>
