@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import { Cover } from "src/typings/common.types";
 import {
 	StyledCard,
@@ -38,7 +39,17 @@ const PostCard: React.FC<Props> = ({
 		},
 	},
 }) => {
-	const previewContent = content.split("\n")[1];
+	const [previewPhrase, setPreviewPhrase] = useState("");
+
+	const previewContent = content.split("\n");
+
+	useEffect(() => {
+		if (previewContent[0].includes("#")) {
+			setPreviewPhrase(previewContent[1]);
+		} else {
+			setPreviewPhrase(previewContent[0]);
+		}
+	}, [previewContent]);
 
 	return (
 		<StyledCard>
@@ -55,7 +66,7 @@ const PostCard: React.FC<Props> = ({
 				<Link href={`blog/${slug}`} passHref>
 					<Title variant='body1'>{title}</Title>
 				</Link>
-				<PreviewContent variant='body2'>{previewContent}</PreviewContent>
+				<PreviewContent variant='body2'>{previewPhrase}</PreviewContent>
 			</StyledCardContent>
 			<StyledCardActions>
 				<Button href={`/blog/${slug}`}>XEM CHI TIẾT</Button>

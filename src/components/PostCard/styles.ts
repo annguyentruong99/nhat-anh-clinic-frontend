@@ -38,6 +38,7 @@ export const Title = styled(Typography)(({ theme }) => ({
 
 export const PreviewContent = styled(Typography)(({ theme }) => ({
 	color: theme.palette.grey[500],
+	marginTop: "8px",
 }));
 
 export const StyledCardActions = styled(CardActions)(({ theme }) => ({
