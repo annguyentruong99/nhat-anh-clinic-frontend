@@ -92,6 +92,21 @@ query HomePage {
 							}
 						}
 					}
+					... on ComponentModulesBlogTabs {
+						blogTabsHeading: heading {
+							title
+							subtitle
+						}
+						ads {
+							cover {
+								data {
+									attributes {
+										url
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 		}
