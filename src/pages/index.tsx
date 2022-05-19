@@ -4,6 +4,7 @@ import {
 	HomePageDocument,
 	ServicesDocument,
 	DoctorsDocument,
+	PostsDocument,
 } from "src/__generated__/types";
 
 import ModuleHeroBanner from "src/modules/ModuleHeroBanner";
@@ -11,6 +12,7 @@ import ModuleServicesSlider from "src/modules/ModuleServicesSlider";
 import ModuleDoctorsSlider from "src/modules/ModuleDoctorsSlider";
 import ModuleWhyChooseUs from "src/modules/ModuleWhyChooseUs";
 import ModuleAchievements from "src/modules/ModuleAchievements";
+import ModuleBlogTabs from "src/modules/ModuleBlogTabs";
 
 const modulesMap: { [module: string]: string } = {
 	ModuleHeroBanner: "ComponentModulesHeroBanner",
@@ -18,12 +20,14 @@ const modulesMap: { [module: string]: string } = {
 	ModuleDoctorsSlider: "ComponentModulesDoctorsSlider",
 	ModuleWhyChooseUs: "ComponentModulesWhyChooseUs",
 	ModuleAchievements: "ComponentModulesAchievements",
+	ModuleBlogTabs: "ComponentModulesBlogTabs",
 };
 
 const Home = ({
 	pageData,
 	services,
 	doctors,
+	posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
 	const { modules } = pageData;
 
@@ -70,6 +74,14 @@ const Home = ({
 					)[0]
 				}
 			/>
+			<ModuleBlogTabs
+				moduleProps={
+					modules.filter(
+						(module) => module.__typename === modulesMap[ModuleBlogTabs.name],
+					)[0]
+				}
+				posts={posts?.data.posts}
+			/>
 		</div>
 	);
 };
@@ -88,11 +100,16 @@ export const getStaticProps: GetStaticProps = async () => {
 		.query({ query: DoctorsDocument })
 		.then((res) => res);
 
+	const posts = await apolloClient
+		.query({ query: PostsDocument })
+		.then((res) => res);
+
 	return {
 		props: {
 			pageData: pageData?.data?.page?.data?.attributes,
 			services,
 			doctors,
+			posts,
 		},
 		revalidate: 1800, // 30 mins
 	};
