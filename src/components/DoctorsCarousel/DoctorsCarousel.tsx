@@ -33,9 +33,7 @@ const DoctorsCarousel: React.FC<Props> = ({
 	}, []);
 
 	const [slides, setSlides] = useState(
-		doctorsData.map((doctor, ind) => (
-			<DoctorCard key={ind} doctor={doctor} index={ind + 1} />
-		)),
+		doctorsData.map((doctor, ind) => <DoctorCard key={ind} doctor={doctor} />),
 	);
 
 	const appendNumber = useRef(doctorsData.length);
