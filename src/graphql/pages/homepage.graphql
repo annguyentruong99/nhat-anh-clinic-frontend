@@ -97,6 +97,15 @@ query HomePage {
 							title
 							subtitle
 						}
+						ads {
+							cover {
+								data {
+									attributes {
+										url
+									}
+								}
+							}
+						}
 					}
 				}
 			}
