@@ -1,0 +1,99 @@
+query HomePage {
+	page(id: 1) {
+		data {
+			id
+			attributes {
+				title
+				slug
+				seo {
+					seoTitle
+					seoDesc
+				}
+				modules {
+					... on ComponentModulesHeroBanner {
+						title {
+							title1
+							title2
+						}
+						description
+						subtitle
+						cover {
+							data {
+								attributes {
+									url
+								}
+							}
+						}
+						cta {
+							content
+							link
+						}
+					}
+					... on ComponentModulesServicesSlider {
+						__typename
+						servicesSliderHeading: heading {
+							title
+							subtitle
+						}
+					}
+					... on ComponentModulesDoctorsSlider {
+						__typename
+						doctorsSliderHeading: heading {
+							title
+							subtitle
+						}
+					}
+					... on ComponentModulesWhyChooseUs {
+						__typename
+						backgroundImage {
+							data {
+								attributes {
+									url
+								}
+							}
+						}
+						whyChooseUsHeading: heading {
+							title
+						}
+						imageText {
+							cover {
+								data {
+									attributes {
+										url
+									}
+								}
+							}
+							title
+							description
+						}
+					}
+					... on ComponentModulesAchievements {
+						__typename
+						title {
+							title1
+							title2
+						}
+						achievements {
+							icon {
+								data {
+									attributes {
+										url
+									}
+								}
+							}
+							title
+							description
+						}
+						cover {
+							data {
+								attributes {
+									url
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
