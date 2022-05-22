@@ -44,17 +44,18 @@ const PostCard: React.FC<Props> = ({
 	const previewContent = content.split("\n");
 
 	useEffect(() => {
-		if (previewContent[0].includes("#")) {
-			setPreviewPhrase(previewContent[1]);
-		} else {
-			setPreviewPhrase(previewContent[0]);
-		}
+		previewContent.every((phrase) => {
+			if (!phrase.includes("#")) {
+				setPreviewPhrase(phrase.replaceAll("*", ""));
+				return false;
+			}
+		});
 	}, [previewContent]);
 
 	return (
 		<StyledCard>
 			<CardMediaContainer>
-				<Link href={`blog/${slug}`} passHref>
+				<Link href={`/blog/${slug}`} passHref>
 					<StyledCardMedia
 						component='img'
 						height={200}
@@ -63,7 +64,7 @@ const PostCard: React.FC<Props> = ({
 				</Link>
 			</CardMediaContainer>
 			<StyledCardContent>
-				<Link href={`blog/${slug}`} passHref>
+				<Link href={`/blog/${slug}`} passHref>
 					<Title variant='body1'>{title}</Title>
 				</Link>
 				<PreviewContent variant='body2'>{previewPhrase}</PreviewContent>

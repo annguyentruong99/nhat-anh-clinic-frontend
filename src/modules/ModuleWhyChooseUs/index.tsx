@@ -11,18 +11,14 @@ interface Props {
 }
 
 const ModuleWhyChooseUs: React.FC<Props> = ({
-	moduleProps: { whyChooseUsHeading, backgroundImage, imageText },
+	moduleProps: { heading, backgroundImage, imageText },
 }) => (
 	<StyledBox
 		sx={{
 			backgroundImage: `url(http://localhost:1337${backgroundImage.data.attributes.url})`,
 		}}>
 		<Container>
-			<SectionHeading
-				heading={whyChooseUsHeading}
-				titleColor='white'
-				align='center'
-			/>
+			<SectionHeading heading={heading} titleColor='white' align='center' />
 			<ImageTextContainer container>
 				{imageText.map((item) => (
 					<Grid key={item.title} item xs={12} md={6} lg={3}>

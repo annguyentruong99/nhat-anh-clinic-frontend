@@ -1,11 +1,6 @@
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
-import { initializeApollo } from "src/lib/apolloClient";
-import {
-	HomePageDocument,
-	ServicesDocument,
-	DoctorsDocument,
-	PostsDocument,
-} from "src/__generated__/types";
+import { CoreApi } from "src/lib/core-api";
+import { API_ENDPOINTS } from "src/lib/endpoints";
 
 import ModuleHeroBanner from "src/modules/ModuleHeroBanner";
 import ModuleServicesSlider from "src/modules/ModuleServicesSlider";
@@ -15,12 +10,12 @@ import ModuleAchievements from "src/modules/ModuleAchievements";
 import ModuleBlogTabs from "src/modules/ModuleBlogTabs";
 
 const modulesMap: { [module: string]: string } = {
-	ModuleHeroBanner: "ComponentModulesHeroBanner",
-	ModuleServicesSlider: "ComponentModulesServicesSlider",
-	ModuleDoctorsSlider: "ComponentModulesDoctorsSlider",
-	ModuleWhyChooseUs: "ComponentModulesWhyChooseUs",
-	ModuleAchievements: "ComponentModulesAchievements",
-	ModuleBlogTabs: "ComponentModulesBlogTabs",
+	ModuleHeroBanner: "modules.hero-banner",
+	ModuleServicesSlider: "modules.services-slider",
+	ModuleDoctorsSlider: "modules.doctors-slider",
+	ModuleWhyChooseUs: "modules.why-choose-us",
+	ModuleAchievements: "modules.achievements",
+	ModuleBlogTabs: "modules.blog-tabs",
 };
 
 const Home = ({
@@ -34,79 +29,67 @@ const Home = ({
 	return (
 		<div>
 			<ModuleHeroBanner
-				moduleProps={
-					modules.filter(
-						(module) => module.__typename === modulesMap[ModuleHeroBanner.name],
-					)[0]
-				}
+				moduleProps={modules.find(
+					(module) => module.__component === modulesMap[ModuleHeroBanner.name],
+				)}
 			/>
 			<ModuleServicesSlider
-				moduleProps={
-					modules.filter(
-						(module) =>
-							module.__typename === modulesMap[ModuleServicesSlider.name],
-					)[0]
-				}
-				services={services?.data?.services}
+				moduleProps={modules.find(
+					(module) =>
+						module.__component === modulesMap[ModuleServicesSlider.name],
+				)}
+				services={services?.data}
 			/>
 			<ModuleDoctorsSlider
-				moduleProps={
-					modules.filter(
-						(module) =>
-							module.__typename === modulesMap[ModuleDoctorsSlider.name],
-					)[0]
-				}
-				doctors={doctors?.data?.doctors}
+				moduleProps={modules.find(
+					(module) =>
+						module.__component === modulesMap[ModuleDoctorsSlider.name],
+				)}
+				doctors={doctors?.data}
 			/>
 			<ModuleWhyChooseUs
-				moduleProps={
-					modules.filter(
-						(module) =>
-							module.__typename === modulesMap[ModuleWhyChooseUs.name],
-					)[0]
-				}
+				moduleProps={modules.find(
+					(module) => module.__component === modulesMap[ModuleWhyChooseUs.name],
+				)}
 			/>
 			<ModuleAchievements
-				moduleProps={
-					modules.filter(
-						(module) =>
-							module.__typename === modulesMap[ModuleAchievements.name],
-					)[0]
-				}
+				moduleProps={modules.find(
+					(module) =>
+						module.__component === modulesMap[ModuleAchievements.name],
+				)}
 			/>
 			<ModuleBlogTabs
-				moduleProps={
-					modules.filter(
-						(module) => module.__typename === modulesMap[ModuleBlogTabs.name],
-					)[0]
-				}
-				posts={posts?.data.posts}
+				moduleProps={modules.find(
+					(module) => module.__component === modulesMap[ModuleBlogTabs.name],
+				)}
+				posts={posts?.data}
 			/>
 		</div>
 	);
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-	const apolloClient = initializeApollo();
-	const pageData = await apolloClient
-		.query({ query: HomePageDocument })
-		.then((res) => res);
+	const Pages = new CoreApi(API_ENDPOINTS.pages);
+	const Services = new CoreApi(API_ENDPOINTS.services);
+	const Doctors = new CoreApi(API_ENDPOINTS.doctors);
+	const Posts = new CoreApi(API_ENDPOINTS.posts);
 
-	const services = await apolloClient
-		.query({ query: ServicesDocument })
-		.then((res) => res);
+	const { data: pageData } = await Pages.findAll();
 
-	const doctors = await apolloClient
-		.query({ query: DoctorsDocument })
-		.then((res) => res);
+	const { data: services } = await Services.findAll();
 
-	const posts = await apolloClient
-		.query({ query: PostsDocument })
-		.then((res) => res);
+	const { data: doctors } = await Doctors.findAll();
+
+	const { data: posts } = await Posts.findAll({
+		sort: {
+			field: "id:desc",
+		},
+		filters: undefined,
+	});
 
 	return {
 		props: {
-			pageData: pageData?.data?.page?.data?.attributes,
+			pageData: pageData?.data[0]?.attributes,
 			services,
 			doctors,
 			posts,

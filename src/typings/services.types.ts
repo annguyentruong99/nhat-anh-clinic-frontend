@@ -6,15 +6,13 @@ export type ServiceTypes =
 	| "kham_dich_vu";
 
 export interface Services {
-	data: {
-		attributes: {
-			name: string;
-			type: ServiceTypes;
-			slug: string;
-			cover: Cover;
-			highlights: {
-				text: string;
-			}[];
-		};
-	}[];
+	attributes: {
+		name: string;
+		type: ServiceTypes;
+		slug: string;
+		cover: Cover;
+		highlights: {
+			text: string;
+		}[];
+	};
 }

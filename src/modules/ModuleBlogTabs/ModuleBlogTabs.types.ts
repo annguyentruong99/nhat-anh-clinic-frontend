@@ -1,7 +1,7 @@
 import { Cover, Headings } from "src/typings/common.types";
 
 export type ModuleProps = {
-	blogTabsHeading: Headings;
+	heading: Headings;
 	ads: {
 		cover: Cover;
 	}[];

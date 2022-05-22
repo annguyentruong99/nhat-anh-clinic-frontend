@@ -1,5 +1,3 @@
-const withGraphql = require("next-plugin-graphql");
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	images: {
@@ -16,4 +14,4 @@ const nextConfig = {
 	},
 };
 
-module.exports = withGraphql(nextConfig);
+module.exports = nextConfig;
