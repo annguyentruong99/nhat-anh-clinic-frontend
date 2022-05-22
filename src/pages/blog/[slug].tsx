@@ -6,7 +6,7 @@ import type {
 import { initializeApollo } from "src/lib/apolloClient";
 import { Posts } from "src/typings/posts.types";
 import { PostsDocument } from "src/__generated__/types";
-import { Title } from "./styles";
+import { PostContentContainer, Title } from "./styles";
 
 import ReactMarkdown from "react-markdown";
 import Box from "@mui/material/Box";
@@ -14,7 +14,7 @@ import Container from "@mui/material/Container";
 
 const BlogPost = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
 	return (
-		<Box>
+		<PostContentContainer>
 			<Box
 				sx={{
 					width: "100%",
@@ -27,9 +27,9 @@ const BlogPost = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
 			/>
 			<Container>
 				<Title variant='h1'>{post.attributes.title}</Title>
-				<ReactMarkdown>{post.attributes.content}</ReactMarkdown>;
+				<ReactMarkdown>{post.attributes.content}</ReactMarkdown>
 			</Container>
-		</Box>
+		</PostContentContainer>
 	);
 };
 
