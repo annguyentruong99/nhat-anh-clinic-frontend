@@ -5,6 +5,8 @@ import type {
 } from "next";
 import { Posts } from "src/typings/posts.types";
 import {
+	StyledContainer,
+	BreadcrumbsContainer,
 	PostContentContainer,
 	Title,
 	PostSuggestionsContainer,
@@ -12,6 +14,7 @@ import {
 import { CoreApi } from "src/lib/core-api";
 import { API_ENDPOINTS } from "src/lib/endpoints";
 import PostSuggestions from "src/components/PostSuggestions";
+import Breadcrumbs from "src/components/Breadcrumbs";
 
 import ReactMarkdown from "react-markdown";
 import Box from "@mui/material/Box";
@@ -31,18 +34,34 @@ const BlogPost = ({
 					backgroundImage: `url(http://localhost:1337${post.attributes.cover.data.attributes.url})`,
 					backgroundRepeat: "no-repeat",
 					backgroundSize: "cover",
-					backgroundPosition: "50% 50%",
+					backgroundPosition: "center center",
 				}}
 			/>
-			<Container>
-				<PostContentContainer>
+			<StyledContainer>
+				<Container>
+					<BreadcrumbsContainer>
+						<Breadcrumbs
+							data={[
+								{
+									name: "Blog",
+									link: "/blog",
+								},
+								{
+									name: post.attributes.title,
+									link: `/blog/${post.attributes.slug}`,
+								},
+							]}
+						/>
+					</BreadcrumbsContainer>
 					<Title variant='h1'>{post.attributes.title}</Title>
-					<ReactMarkdown>{post.attributes.content}</ReactMarkdown>
-				</PostContentContainer>
-				<PostSuggestionsContainer>
-					<PostSuggestions currentPost={post} posts={posts} />
-				</PostSuggestionsContainer>
-			</Container>
+					<PostContentContainer>
+						<ReactMarkdown>{post.attributes.content}</ReactMarkdown>
+					</PostContentContainer>
+					<PostSuggestionsContainer>
+						<PostSuggestions currentPost={post} posts={posts} />
+					</PostSuggestionsContainer>
+				</Container>
+			</StyledContainer>
 		</React.Fragment>
 	);
 };
