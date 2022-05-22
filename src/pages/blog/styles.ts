@@ -15,3 +15,11 @@ export const Title = styled(Typography)(({ theme }) => ({
 	color: theme.palette.primary.darker,
 	margin: "24px 0",
 }));
+
+export const PostSuggestionsContainer = styled(Box)(({ theme }) => ({
+	margin: "40px 0",
+
+	[theme.breakpoints.up("md")]: {
+		margin: "100px 0",
+	},
+}));

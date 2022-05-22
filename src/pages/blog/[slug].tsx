@@ -4,17 +4,26 @@ import type {
 	InferGetStaticPropsType,
 } from "next";
 import { Posts } from "src/typings/posts.types";
-import { PostContentContainer, Title } from "./styles";
+import {
+	PostContentContainer,
+	Title,
+	PostSuggestionsContainer,
+} from "./styles";
 import { CoreApi } from "src/lib/core-api";
 import { API_ENDPOINTS } from "src/lib/endpoints";
+import PostSuggestions from "src/components/PostSuggestions";
 
 import ReactMarkdown from "react-markdown";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
+import React from "react";
 
-const BlogPost = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const BlogPost = ({
+	post,
+	posts,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
 	return (
-		<PostContentContainer>
+		<React.Fragment>
 			<Box
 				sx={{
 					width: "100%",
@@ -26,17 +35,22 @@ const BlogPost = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
 				}}
 			/>
 			<Container>
-				<Title variant='h1'>{post.attributes.title}</Title>
-				<ReactMarkdown>{post.attributes.content}</ReactMarkdown>
+				<PostContentContainer>
+					<Title variant='h1'>{post.attributes.title}</Title>
+					<ReactMarkdown>{post.attributes.content}</ReactMarkdown>
+				</PostContentContainer>
+				<PostSuggestionsContainer>
+					<PostSuggestions currentPost={post} posts={posts} />
+				</PostSuggestionsContainer>
 			</Container>
-		</PostContentContainer>
+		</React.Fragment>
 	);
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const Posts = new CoreApi(API_ENDPOINTS.posts);
 
-	const { data: posts } = await Posts.findAll({
+	const { data: post } = await Posts.findAll({
 		sort: undefined,
 		filters: {
 			field: "slug",
@@ -45,9 +59,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 		},
 	});
 
+	const { data: posts } = await Posts.findAll();
+
 	return {
 		props: {
-			post: posts?.data[0],
+			post: post?.data[0],
+			posts: posts?.data,
 		},
 		revalidate: 1800,
 	};
