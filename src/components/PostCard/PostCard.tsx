@@ -44,11 +44,12 @@ const PostCard: React.FC<Props> = ({
 	const previewContent = content.split("\n");
 
 	useEffect(() => {
-		if (previewContent[0].includes("#")) {
-			setPreviewPhrase(previewContent[1]);
-		} else {
-			setPreviewPhrase(previewContent[0]);
-		}
+		previewContent.every((phrase) => {
+			if (!phrase.includes("#")) {
+				setPreviewPhrase(phrase.replaceAll("*", ""));
+				return false;
+			}
+		});
 	}, [previewContent]);
 
 	return (
