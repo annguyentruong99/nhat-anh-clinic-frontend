@@ -6,5 +6,6 @@ export interface Posts {
 		slug: string;
 		content: string;
 		cover: Cover;
+		tags: string | null;
 	};
 }

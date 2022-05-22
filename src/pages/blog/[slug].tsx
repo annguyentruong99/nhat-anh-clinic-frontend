@@ -3,10 +3,10 @@ import type {
 	GetStaticProps,
 	InferGetStaticPropsType,
 } from "next";
-import { initializeApollo } from "src/lib/apolloClient";
 import { Posts } from "src/typings/posts.types";
-import { PostsDocument } from "src/__generated__/types";
 import { PostContentContainer, Title } from "./styles";
+import { CoreApi } from "src/lib/core-api";
+import { API_ENDPOINTS } from "src/lib/endpoints";
 
 import ReactMarkdown from "react-markdown";
 import Box from "@mui/material/Box";
@@ -34,34 +34,31 @@ const BlogPost = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-	const apolloClient = initializeApollo();
-	const posts = await apolloClient
-		.query({ query: PostsDocument })
-		.then((res) => res.data.posts as Posts);
+	const Posts = new CoreApi(API_ENDPOINTS.posts);
 
-	if (!posts) {
-		return {
-			notFound: true,
-		};
-	}
+	const { data: posts } = await Posts.findAll({
+		sort: undefined,
+		filters: {
+			field: "slug",
+			operator: "$eq",
+			value: params?.slug as string,
+		},
+	});
 
 	return {
 		props: {
-			post: posts.data.filter(
-				(post) => post.attributes.slug === params.slug,
-			)[0],
+			post: posts?.data[0],
 		},
 		revalidate: 1800,
 	};
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const apolloClient = initializeApollo();
-	const posts = await apolloClient
-		.query({ query: PostsDocument })
-		.then((res) => res);
+	const Posts = new CoreApi(API_ENDPOINTS.posts);
 
-	const paths = (posts?.data?.posts as Posts).data.map((post) => ({
+	const { data: posts } = await Posts.findAll();
+
+	const paths = (posts?.data as Posts[]).map((post) => ({
 		params: {
 			slug: post.attributes.slug,
 		},

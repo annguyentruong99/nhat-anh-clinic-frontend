@@ -81,8 +81,8 @@ const ModuleBlogTabs: React.FC<Props> = ({
 					<TabPanel value={value} index={0}>
 						<Grid container spacing={2}>
 							{posts
+								.filter((post) => post.attributes.tags === "Sản phụ khoa")
 								.slice(0, 6)
-								.sort(() => Math.random() - 0.5)
 								.map((post) => (
 									<Grid item xs={12} md={4} key={post.attributes.slug}>
 										<Box sx={{ marginTop: "20px" }}>

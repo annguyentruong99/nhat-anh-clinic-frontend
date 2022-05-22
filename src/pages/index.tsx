@@ -26,13 +26,6 @@ const Home = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
 	const { modules } = pageData;
 
-	console.log({
-		pageData,
-		services,
-		doctors,
-		posts,
-	});
-
 	return (
 		<div>
 			<ModuleHeroBanner
@@ -87,7 +80,12 @@ export const getStaticProps: GetStaticProps = async () => {
 
 	const { data: doctors } = await Doctors.findAll();
 
-	const { data: posts } = await Posts.findAll();
+	const { data: posts } = await Posts.findAll({
+		sort: {
+			field: "id:desc",
+		},
+		filters: undefined,
+	});
 
 	return {
 		props: {
