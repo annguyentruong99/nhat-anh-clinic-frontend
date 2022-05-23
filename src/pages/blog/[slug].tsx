@@ -10,7 +10,7 @@ import {
 	PostContentContainer,
 	Title,
 	PostSuggestionsContainer,
-} from "./styles";
+} from "src/styles/blog.styles";
 import { CoreApi } from "src/lib/core-api";
 import { API_ENDPOINTS } from "src/lib/endpoints";
 import PostSuggestions from "src/components/PostSuggestions";

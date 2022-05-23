@@ -1,22 +1,7 @@
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import { CoreApi } from "src/lib/core-api";
 import { API_ENDPOINTS } from "src/lib/endpoints";
-
-import ModuleHeroBanner from "src/modules/ModuleHeroBanner";
-import ModuleServicesSlider from "src/modules/ModuleServicesSlider";
-import ModuleDoctorsSlider from "src/modules/ModuleDoctorsSlider";
-import ModuleWhyChooseUs from "src/modules/ModuleWhyChooseUs";
-import ModuleAchievements from "src/modules/ModuleAchievements";
-import ModuleBlogTabs from "src/modules/ModuleBlogTabs";
-
-const modulesMap: { [module: string]: string } = {
-	ModuleHeroBanner: "modules.hero-banner",
-	ModuleServicesSlider: "modules.services-slider",
-	ModuleDoctorsSlider: "modules.doctors-slider",
-	ModuleWhyChooseUs: "modules.why-choose-us",
-	ModuleAchievements: "modules.achievements",
-	ModuleBlogTabs: "modules.blog-tabs",
-};
+import { getModulesMap } from "src/utils";
 
 const Home = ({
 	pageData,
@@ -26,49 +11,22 @@ const Home = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
 	const { modules } = pageData;
 
-	return (
-		<div>
-			<ModuleHeroBanner
-				moduleProps={modules.find(
-					(module) => module.__component === modulesMap[ModuleHeroBanner.name],
-				)}
-			/>
-			<ModuleServicesSlider
-				moduleProps={modules.find(
-					(module) =>
-						module.__component === modulesMap[ModuleServicesSlider.name],
-				)}
-				services={services?.data}
-			/>
-			<ModuleDoctorsSlider
-				moduleProps={modules.find(
-					(module) =>
-						module.__component === modulesMap[ModuleDoctorsSlider.name],
-				)}
-				doctors={doctors?.data}
-			/>
-			<ModuleWhyChooseUs
-				moduleProps={modules.find(
-					(module) => module.__component === modulesMap[ModuleWhyChooseUs.name],
-				)}
-			/>
-			<ModuleAchievements
-				moduleProps={modules.find(
-					(module) =>
-						module.__component === modulesMap[ModuleAchievements.name],
-				)}
-			/>
-			<ModuleBlogTabs
-				moduleProps={modules.find(
-					(module) => module.__component === modulesMap[ModuleBlogTabs.name],
-				)}
-				posts={posts?.data}
-			/>
-		</div>
-	);
+	const modulesMap = getModulesMap(modules, services, posts, doctors);
+
+	if (!modules) return null;
+
+	return modules.map((module, ind) => {
+		if (!module?.__component) return null;
+		const Module = modulesMap[module.__component].component;
+		if (!Module) {
+			console.error(`Unexpected Module ${module.__component}`);
+			return null;
+		}
+		return <Module key={ind} {...modulesMap[module.__component].props} />;
+	});
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const Pages = new CoreApi(API_ENDPOINTS.pages);
 	const Services = new CoreApi(API_ENDPOINTS.services);
 	const Doctors = new CoreApi(API_ENDPOINTS.doctors);
@@ -89,10 +47,10 @@ export const getStaticProps: GetStaticProps = async () => {
 
 	return {
 		props: {
-			pageData: pageData?.data[0]?.attributes,
-			services,
-			doctors,
-			posts,
+			pageData: pageData.data[0].attributes,
+			services: services.data,
+			doctors: doctors.data,
+			posts: posts.data,
 		},
 		revalidate: 1800, // 30 mins
 	};

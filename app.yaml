@@ -2,6 +2,9 @@ runtime: nodejs16
 
 instance_class: F2
 
+env_variables:
+  NEXT_PUBLIC_REST_API_ENDPOINT: 'https://admin.nhatanh.clinic/api'
+
 handlers:
 - url: /.*
   secure: always

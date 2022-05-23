@@ -5,6 +5,7 @@ import Head from "next/head";
 import React from "react";
 import ThemeProvider from "src/theme";
 import Layout from "src/components/Layout";
+import ErrorBoundary from "src/components/ErrorBoundary";
 
 const App = ({ Component, pageProps }: AppProps) => {
 	return (
@@ -12,11 +13,13 @@ const App = ({ Component, pageProps }: AppProps) => {
 			<Head>
 				<meta name='viewport' content='initial-scale=1, width=device-width' />
 			</Head>
-			<ThemeProvider>
-				<Layout>
-					<Component {...pageProps} />
-				</Layout>
-			</ThemeProvider>
+			<ErrorBoundary>
+				<ThemeProvider>
+					<Layout>
+						<Component {...pageProps} />
+					</Layout>
+				</ThemeProvider>
+			</ErrorBoundary>
 		</>
 	);
 };
