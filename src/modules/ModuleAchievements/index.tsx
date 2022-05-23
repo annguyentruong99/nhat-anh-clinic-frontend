@@ -1,7 +1,7 @@
-import { IconTextContainer, TitleContainer } from "./styles";
+import Image from "next/image";
+import { IconTextContainer, Title1, StyledBox } from "./styles";
 import { ModuleProps } from "./ModuleAchievements.types";
 import IconText from "src/components/IconText";
-import Title from "src/components/Title";
 
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -23,11 +23,11 @@ const ModuleAchievements: React.FC<Props> = ({
 	},
 }) => {
 	return (
-		<Box sx={{ backgroundColor: (theme) => theme.palette.primary.light }}>
+		<Box sx={{ backgroundColor: "primary.light" }}>
 			<Container
 				sx={{
 					backgroundImage: {
-						xs: "url(https://storage.googleapis.com/nhat-anh-media/abstract_2_ebd3522e0e/abstract_2_ebd3522e0e.png)",
+						xs: "url(http://localhost:1337/uploads/abstract_2_0921b86601.png)",
 						lg: "none",
 						xl: "none",
 					},
@@ -44,15 +44,13 @@ const ModuleAchievements: React.FC<Props> = ({
 						sx={{
 							padding: "107px 0 67px 0",
 							backgroundImage: {
-								lg: "url(https://storage.googleapis.com/nhat-anh-media/abstract_2_ebd3522e0e/abstract_2_ebd3522e0e.png)",
+								lg: "url(http://localhost:1337/uploads/abstract_2_0921b86601.png)",
 							},
 							backgroundSize: "209px 209px",
 							backgroundRepeat: "no-repeat",
 							backgroundPosition: "bottom right",
 						}}>
-						<TitleContainer>
-							<Title title1={title1} title2={title2} variant='h1' />
-						</TitleContainer>
+						<Title1 variant='h1'>{title1 + " " + title2}</Title1>
 						<IconTextContainer container>
 							{achievements.map((achievement, ind) => (
 								<Grid item xs={6} md={3} key={ind}>
@@ -71,10 +69,7 @@ const ModuleAchievements: React.FC<Props> = ({
 						md={0}
 						lg={6}
 						sx={{
-							backgroundImage:
-								process.env.NODE_ENV === "production"
-									? `url(${url})`
-									: `url(http://localhost:1337${url})`,
+							backgroundImage: `url(http://localhost:1337${url})`,
 							backgroundSize: "cover",
 							backgroundRepeat: "no-repeat",
 						}}></Grid>

@@ -13,6 +13,7 @@ import { FooterProps } from "./Footer.types";
 
 const Footer: React.FC<FooterProps> = ({
 	taxNumber,
+	commerceLicense,
 	address,
 	phone,
 	email,
@@ -32,7 +33,10 @@ const Footer: React.FC<FooterProps> = ({
 					direction='row'
 					justifyContent='space-between'
 					alignItems='flex-start'>
-					<BusinessInfo taxNumber={taxNumber} />
+					<BusinessInfo
+						taxNumber={taxNumber}
+						commerceLicense={commerceLicense}
+					/>
 
 					<ContactInfo address={address} phone={phone} email={email} />
 

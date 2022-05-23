@@ -57,11 +57,7 @@ const ServiceCard: React.FC<Props> = ({
 		<CardMedia
 			component='img'
 			height='200'
-			image={
-				process.env.NODE_ENV === "production"
-					? url
-					: `http://localhost:1337${url}`
-			}
+			image={`http://localhost:1337${url}`}
 			alt='Ảnh Dịch Vụ'
 		/>
 		<StyledCardContent>

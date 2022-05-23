@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
@@ -35,56 +33,27 @@ const ContactInfo: React.FC<Props> = ({ address, phone, email }) => {
 				<span>
 					<Location />
 				</span>
-				<Link
-					href='https://www.google.com/maps?q=20+Ngô+Quyền,+phường+6,+Quận+5,+Thành+phố+Hồ+Chí+Minh,+Viet+Nam'
-					passHref>
-					<Typography
-						sx={{
-							color: "grey.0",
-							pl: "8px",
-							cursor: "pointer",
-							"&:hover": { color: "warning.main" },
-						}}
-						variant='body2'>
-						{address}
-					</Typography>
-				</Link>
+				<Typography sx={{ color: "grey.0", pl: "8px" }} variant='body2'>
+					{address}
+				</Typography>
 			</span>
 
 			<span style={{ display: "flex" }}>
 				<span>
 					<Phone />
 				</span>
-				<Link href={`tel:${phone.replace(".", "")}`} passHref>
-					<Typography
-						sx={{
-							color: "grey.0",
-							pl: "8px",
-							cursor: "pointer",
-							"&:hover": { color: "warning.main" },
-						}}
-						variant='body2'>
-						{phone}
-					</Typography>
-				</Link>
+				<Typography sx={{ color: "grey.0", pl: "8px" }} variant='body2'>
+					{phone}
+				</Typography>
 			</span>
 
 			<span style={{ display: "flex" }}>
 				<span>
 					<Email />
 				</span>
-				<Link href={`mailto:${email}`} passHref>
-					<Typography
-						sx={{
-							color: "grey.0",
-							pl: "8px",
-							cursor: "pointer",
-							"&:hover": { color: "warning.main" },
-						}}
-						variant='body2'>
-						{email}
-					</Typography>
-				</Link>
+				<Typography sx={{ color: "grey.0", pl: "8px" }} variant='body2'>
+					{email}
+				</Typography>
 			</span>
 		</Grid>
 	);
