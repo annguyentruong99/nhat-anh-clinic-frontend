@@ -17,10 +17,12 @@ import { useEffect, useRef, useState } from "react";
 import { Services } from "src/typings/services.types";
 
 interface Props {
-	services: Services[];
+	services: Services;
 }
 
-const ServicesCarousel: React.FC<Props> = ({ services }) => {
+const ServicesCarousel: React.FC<Props> = ({
+	services: { data: servicesData },
+}) => {
 	const theme = useTheme();
 	const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
 
@@ -31,12 +33,12 @@ const ServicesCarousel: React.FC<Props> = ({ services }) => {
 	}, []);
 
 	const [slides, setSlides] = useState(
-		services.map((service, ind) => (
+		servicesData.map((service, ind) => (
 			<ServiceCard key={ind} service={service} index={ind + 1} />
 		)),
 	);
 
-	const appendNumber = useRef(services.length);
+	const appendNumber = useRef(servicesData.length);
 
 	const appendSlide = () => {
 		setSlides([...slides, <span key={++appendNumber.current}></span>]);
@@ -108,7 +110,7 @@ const ServicesCarousel: React.FC<Props> = ({ services }) => {
 				...paginationStyles,
 			}}>
 			<Swiper {...swiperProps}>
-				{slides.slice(0, services.length + 1).map((slide, ind) => (
+				{slides.slice(0, servicesData.length + 1).map((slide, ind) => (
 					<SwiperSlide virtualIndex={ind} key={ind}>
 						{slide}
 					</SwiperSlide>

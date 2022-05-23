@@ -17,10 +17,12 @@ import { Doctors } from "src/typings/doctors.types";
 import DoctorCard from "../DoctorCard";
 
 interface Props {
-	doctors: Doctors[];
+	doctors: Doctors;
 }
 
-const DoctorsCarousel: React.FC<Props> = ({ doctors }) => {
+const DoctorsCarousel: React.FC<Props> = ({
+	doctors: { data: doctorsData },
+}) => {
 	const theme = useTheme();
 	const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
 
@@ -31,10 +33,12 @@ const DoctorsCarousel: React.FC<Props> = ({ doctors }) => {
 	}, []);
 
 	const [slides, setSlides] = useState(
-		doctors.map((doctor, ind) => <DoctorCard key={ind} doctor={doctor} />),
+		doctorsData.map((doctor, ind) => (
+			<DoctorCard key={ind} doctor={doctor} index={ind + 1} />
+		)),
 	);
 
-	const appendNumber = useRef(doctors.length);
+	const appendNumber = useRef(doctorsData.length);
 
 	const appendSlide = () => {
 		setSlides([...slides, <span key={++appendNumber.current}></span>]);
@@ -112,7 +116,7 @@ const DoctorsCarousel: React.FC<Props> = ({ doctors }) => {
 				...paginationStyles,
 			}}>
 			<Swiper {...swiperProps}>
-				{slides.slice(0, doctors.length + 1).map((slide, ind) => (
+				{slides.slice(0, doctorsData.length + 1).map((slide, ind) => (
 					<SwiperSlide virtualIndex={ind} key={ind}>
 						{slide}
 					</SwiperSlide>

@@ -21,11 +21,7 @@ const IconText: React.FC<Props> = ({
 		<IconTextContainer>
 			<IconContainer>
 				<Image
-					src={
-						process.env.NODE_ENV === "production"
-							? url
-							: `http://localhost:1337${url}`
-					}
+					src={`http://localhost:1337${url}`}
 					alt='achievements-icon'
 					width={56}
 					height={56}
