@@ -10,7 +10,7 @@ import {
 	PostContentContainer,
 	Title,
 	PostSuggestionsContainer,
-} from "./styles";
+} from "src/styles/blog.styles";
 import { CoreApi } from "src/lib/core-api";
 import { API_ENDPOINTS } from "src/lib/endpoints";
 import PostSuggestions from "src/components/PostSuggestions";
@@ -31,7 +31,10 @@ const BlogPost = ({
 				sx={{
 					width: "100%",
 					height: "400px",
-					backgroundImage: `url(http://localhost:1337${post.attributes.cover.data.attributes.url})`,
+					backgroundImage:
+						process.env.NODE_ENV === "production"
+							? `url(${post.attributes.cover.data.attributes.url})`
+							: `url(http://localhost:1337${post.attributes.cover.data.attributes.url})`,
 					backgroundRepeat: "no-repeat",
 					backgroundSize: "cover",
 					backgroundPosition: "center center",

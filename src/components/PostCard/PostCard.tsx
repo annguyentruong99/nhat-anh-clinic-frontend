@@ -59,7 +59,11 @@ const PostCard: React.FC<Props> = ({
 					<StyledCardMedia
 						component='img'
 						height={200}
-						image={`http://localhost:1337${url}`}
+						image={
+							process.env.NODE_ENV === "production"
+								? url
+								: `http://localhost:1337${url}`
+						}
 					/>
 				</Link>
 			</CardMediaContainer>

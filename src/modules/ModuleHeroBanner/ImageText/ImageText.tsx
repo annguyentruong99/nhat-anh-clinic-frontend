@@ -30,7 +30,10 @@ const ImageText: React.FC<ModuleProps> = ({
 	return (
 		<StyledBox
 			sx={{
-				backgroundImage: `url(http://localhost:1337${cover.data?.attributes?.url})`,
+				backgroundImage:
+					process.env.NODE_ENV === "production"
+						? `url(${cover.data?.attributes?.url})`
+						: `url(http://localhost:1337${cover.data?.attributes?.url})`,
 				backgroundRepeat: "no-repeat",
 				backgroundPosition: { xs: "70% 100%", md: "50% 100%", lg: "85% 100%" },
 				backgroundSize: { xs: "500px 310px", lg: "auto" },
