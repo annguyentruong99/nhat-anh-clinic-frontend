@@ -10,11 +10,11 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 interface Props {
 	moduleProps: ModuleProps;
-	doctors: Doctors;
+	doctors: Doctors[];
 }
 
 const ModuleDoctorsSlider: React.FC<Props> = ({
-	moduleProps: { doctorsSliderHeading },
+	moduleProps: { heading },
 	doctors,
 }) => {
 	const theme = useTheme();
@@ -24,7 +24,7 @@ const ModuleDoctorsSlider: React.FC<Props> = ({
 		<StyledBox>
 			<Container>
 				<SectionHeading
-					heading={doctorsSliderHeading}
+					heading={heading}
 					align={isDesktop ? "center" : "left"}
 				/>
 				<DoctorsCarousel doctors={doctors} />

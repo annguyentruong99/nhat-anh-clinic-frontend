@@ -39,11 +39,18 @@ export const Title = styled(Typography)(({ theme }) => ({
 export const PreviewContent = styled(Typography)(({ theme }) => ({
 	color: theme.palette.grey[500],
 	marginTop: "8px",
+	maxHeight: "60px",
+	overflow: "hidden",
+	textOverflow: "ellipsis",
 }));
 
 export const StyledCardActions = styled(CardActions)(({ theme }) => ({
-	width: "50%",
+	width: "100%",
 	padding: "0 24px 24px 24px",
+
+	[theme.breakpoints.up("sm")]: {
+		width: "60%",
+	},
 
 	[theme.breakpoints.up("md")]: {
 		display: "none",

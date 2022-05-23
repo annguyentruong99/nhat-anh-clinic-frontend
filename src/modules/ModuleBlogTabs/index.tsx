@@ -23,12 +23,12 @@ const a11yProps = (index: number) => ({
 
 interface Props {
 	moduleProps: ModuleProps;
-	posts: Posts;
+	posts: Posts[];
 }
 
 const ModuleBlogTabs: React.FC<Props> = ({
-	moduleProps: { blogTabsHeading, ads },
-	posts: { data },
+	moduleProps: { heading, ads },
+	posts,
 }) => {
 	const theme = useTheme();
 	const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
@@ -43,7 +43,7 @@ const ModuleBlogTabs: React.FC<Props> = ({
 		<Box sx={{ marginBottom: "100px" }}>
 			<Container>
 				<SectionHeading
-					heading={blogTabsHeading}
+					heading={heading}
 					align={isDesktop ? "center" : "left"}
 				/>
 				<Box sx={{ marginTop: "40px" }}>
@@ -80,9 +80,9 @@ const ModuleBlogTabs: React.FC<Props> = ({
 
 					<TabPanel value={value} index={0}>
 						<Grid container spacing={2}>
-							{data
+							{posts
+								.filter((post) => post.attributes.tags === "Sản phụ khoa")
 								.slice(0, 6)
-								.sort(() => Math.random() - 0.5)
 								.map((post) => (
 									<Grid item xs={12} md={4} key={post.attributes.slug}>
 										<Box sx={{ marginTop: "20px" }}>
@@ -94,7 +94,7 @@ const ModuleBlogTabs: React.FC<Props> = ({
 					</TabPanel>
 					<TabPanel value={value} index={1}>
 						<Grid container spacing={2}>
-							{data.slice(0, 6).map((post) => (
+							{posts.slice(0, 6).map((post) => (
 								<Grid item xs={12} md={4} key={post.attributes.slug}>
 									<Box sx={{ marginTop: "20px" }}>
 										<PostCard post={post} />

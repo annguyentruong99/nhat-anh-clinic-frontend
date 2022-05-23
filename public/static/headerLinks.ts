@@ -5,7 +5,7 @@ export const headerLinks = [
 	},
 	{
 		title: "Dịch vụ",
-		href: "/services",
+		href: "/dich-vu",
 	},
 	{
 		title: "Đội ngũ",
