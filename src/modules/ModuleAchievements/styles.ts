@@ -9,22 +9,6 @@ export const TitleContainer = styled(Box)(({ theme }) => ({
 	},
 }));
 
-export const Title1 = styled(Typography)(({ theme }) => ({
-	display: "inline",
-	color: theme.palette.primary.darker,
-	paddingTop: "40px",
-	maxWidth: "485px",
-
-	[theme.breakpoints.up("md")]: {
-		paddingTop: 0,
-	},
-}));
-
-export const Title2 = styled(Typography)(({ theme }) => ({
-	display: "inline",
-	color: theme.palette.error.main,
-}));
-
 export const IconTextContainer = styled(Grid)(({ theme }) => ({
 	marginTop: "40px",
 	maxWidth: "520px",

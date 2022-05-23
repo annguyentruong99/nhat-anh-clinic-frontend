@@ -1,7 +1,7 @@
-import Image from "next/image";
-import { IconTextContainer, TitleContainer, Title1, Title2 } from "./styles";
+import { IconTextContainer, TitleContainer } from "./styles";
 import { ModuleProps } from "./ModuleAchievements.types";
 import IconText from "src/components/IconText";
+import Title from "src/components/Title";
 
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -51,8 +51,7 @@ const ModuleAchievements: React.FC<Props> = ({
 							backgroundPosition: "bottom right",
 						}}>
 						<TitleContainer>
-							<Title1 variant='h1'>{title1 + " "}</Title1>
-							<Title2 variant='h1'>{title2}</Title2>
+							<Title title1={title1} title2={title2} variant='h1' />
 						</TitleContainer>
 						<IconTextContainer container>
 							{achievements.map((achievement, ind) => (
