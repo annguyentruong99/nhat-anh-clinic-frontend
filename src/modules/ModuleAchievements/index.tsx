@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { IconTextContainer, Title1, StyledBox } from "./styles";
+import { IconTextContainer, TitleContainer, Title1, Title2 } from "./styles";
 import { ModuleProps } from "./ModuleAchievements.types";
 import IconText from "src/components/IconText";
 
@@ -23,7 +23,7 @@ const ModuleAchievements: React.FC<Props> = ({
 	},
 }) => {
 	return (
-		<Box sx={{ backgroundColor: "primary.light" }}>
+		<Box sx={{ backgroundColor: (theme) => theme.palette.primary.light }}>
 			<Container
 				sx={{
 					backgroundImage: {
@@ -50,7 +50,10 @@ const ModuleAchievements: React.FC<Props> = ({
 							backgroundRepeat: "no-repeat",
 							backgroundPosition: "bottom right",
 						}}>
-						<Title1 variant='h1'>{title1 + " " + title2}</Title1>
+						<TitleContainer>
+							<Title1 variant='h1'>{title1 + " "}</Title1>
+							<Title2 variant='h1'>{title2}</Title2>
+						</TitleContainer>
 						<IconTextContainer container>
 							{achievements.map((achievement, ind) => (
 								<Grid item xs={6} md={3} key={ind}>
