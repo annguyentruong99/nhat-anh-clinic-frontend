@@ -27,7 +27,7 @@ const ModuleAchievements: React.FC<Props> = ({
 			<Container
 				sx={{
 					backgroundImage: {
-						xs: "url(http://localhost:1337/uploads/abstract_2_0921b86601.png)",
+						xs: "url(https://storage.googleapis.com/nhat-anh-media/abstract_2_ebd3522e0e/abstract_2_ebd3522e0e.png)",
 						lg: "none",
 						xl: "none",
 					},
@@ -44,7 +44,7 @@ const ModuleAchievements: React.FC<Props> = ({
 						sx={{
 							padding: "107px 0 67px 0",
 							backgroundImage: {
-								lg: "url(http://localhost:1337/uploads/abstract_2_0921b86601.png)",
+								lg: "url(https://storage.googleapis.com/nhat-anh-media/abstract_2_ebd3522e0e/abstract_2_ebd3522e0e.png)",
 							},
 							backgroundSize: "209px 209px",
 							backgroundRepeat: "no-repeat",
@@ -71,7 +71,10 @@ const ModuleAchievements: React.FC<Props> = ({
 						md={0}
 						lg={6}
 						sx={{
-							backgroundImage: `url(http://localhost:1337${url})`,
+							backgroundImage:
+								process.env.NODE_ENV === "production"
+									? `url(${url})`
+									: `url(http://localhost:1337${url})`,
 							backgroundSize: "cover",
 							backgroundRepeat: "no-repeat",
 						}}></Grid>

@@ -14,7 +14,10 @@ const AdBanner: React.FC<Props> = ({
 }) => (
 	<StyledBox
 		sx={{
-			backgroundImage: `url(http://localhost:1337${url})`,
+			backgroundImage:
+				process.env.NODE_ENV === "production"
+					? `url(${url})`
+					: `url(http://localhost:1337${url})`,
 			backgroundPosition: "50% 50%",
 			backgroundRepeat: "no-repeat",
 			objectFit: "cover",

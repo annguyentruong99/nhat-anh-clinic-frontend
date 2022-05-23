@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 export const StyledContainer = styled(Box)(({ theme }) => ({
 	[theme.breakpoints.up("xl")]: {
 		backgroundImage:
-			"url(http://localhost:1337/uploads/abstract_3_9c6dba9d3f.png)",
+			"url(https://storage.googleapis.com/nhat-anh-media/abstract_3_7f6d689a8b/abstract_3_7f6d689a8b.png)",
 		backgroundRepeat: "no-repeat",
 		backgroundPosition: "top right",
 		backgroundSize: "143px 180px",

@@ -15,7 +15,10 @@ const ModuleWhyChooseUs: React.FC<Props> = ({
 }) => (
 	<StyledBox
 		sx={{
-			backgroundImage: `url(http://localhost:1337${backgroundImage.data.attributes.url})`,
+			backgroundImage:
+				process.env.NODE_ENV === "production"
+					? `url(${backgroundImage.data.attributes.url})`
+					: `url(http://localhost:1337${backgroundImage.data.attributes.url})`,
 		}}>
 		<Container>
 			<SectionHeading heading={heading} titleColor='white' align='center' />
@@ -24,7 +27,11 @@ const ModuleWhyChooseUs: React.FC<Props> = ({
 					<Grid key={item.title} item xs={12} md={6} lg={3}>
 						<ImageText
 							title={item.title}
-							cover={`http://localhost:1337${item.cover.data.attributes.url}`}
+							cover={
+								process.env.NODE_ENV === "production"
+									? item.cover.data.attributes.url
+									: `http://localhost:1337${item.cover.data.attributes.url}`
+							}
 							description={item.description}
 						/>
 					</Grid>

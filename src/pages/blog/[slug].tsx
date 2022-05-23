@@ -31,7 +31,10 @@ const BlogPost = ({
 				sx={{
 					width: "100%",
 					height: "400px",
-					backgroundImage: `url(http://localhost:1337${post.attributes.cover.data.attributes.url})`,
+					backgroundImage:
+						process.env.NODE_ENV === "production"
+							? `url(${post.attributes.cover.data.attributes.url})`
+							: `url(http://localhost:1337${post.attributes.cover.data.attributes.url})`,
 					backgroundRepeat: "no-repeat",
 					backgroundSize: "cover",
 					backgroundPosition: "center center",

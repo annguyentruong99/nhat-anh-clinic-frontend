@@ -1,16 +1,16 @@
 import Image from "next/image";
 
 import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
 import CommerceCert from "public/assets/bo-cong-thuong.png";
 
 interface Props {
 	taxNumber: string;
-	commerceLicense: string;
 }
 
-const BusinessInfo: React.FC<Props> = ({ taxNumber, commerceLicense }) => {
+const BusinessInfo: React.FC<Props> = ({ taxNumber }) => {
 	return (
 		<Grid
 			item
@@ -40,23 +40,9 @@ const BusinessInfo: React.FC<Props> = ({ taxNumber, commerceLicense }) => {
 					{taxNumber}
 				</Typography>
 			</Grid>
-
-			<Grid
-				sx={{ marginBottom: "37px" }}
-				container
-				item
-				gap={1}
-				direction='row'
-				alignItems='center'>
-				<Typography sx={{ color: "grey.300" }} variant='body2'>
-					Giấy phép kinh doanh
-				</Typography>
-				<Typography sx={{ color: "grey.0" }} variant='body2'>
-					{commerceLicense}
-				</Typography>
-			</Grid>
-
-			<Image src={CommerceCert} alt='Bộ Công Thương' />
+			<Box sx={{ marginTop: "37px" }}>
+				<Image src={CommerceCert} alt='Bộ Công Thương' />
+			</Box>
 		</Grid>
 	);
 };
