@@ -55,7 +55,7 @@ const PostCard: React.FC<Props> = ({
 	return (
 		<StyledCard>
 			<CardMediaContainer>
-				<Link href={`/blog/${slug}`} passHref>
+				<Link href={`/bai-viet/${slug}`} passHref>
 					<StyledCardMedia
 						component='img'
 						height={200}
@@ -68,13 +68,13 @@ const PostCard: React.FC<Props> = ({
 				</Link>
 			</CardMediaContainer>
 			<StyledCardContent>
-				<Link href={`/blog/${slug}`} passHref>
+				<Link href={`/bai-viet/${slug}`} passHref>
 					<Title variant='body1'>{title}</Title>
 				</Link>
 				<PreviewContent variant='body2'>{previewPhrase}</PreviewContent>
 			</StyledCardContent>
 			<StyledCardActions>
-				<Button href={`/blog/${slug}`}>XEM CHI TIẾT</Button>
+				<Button href={`/bai-viet/${slug}`}>XEM CHI TIẾT</Button>
 			</StyledCardActions>
 		</StyledCard>
 	);

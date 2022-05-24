@@ -67,7 +67,7 @@ const ModuleBlogTabs: React.FC<Props> = ({
 							xs={0}
 							md={4}
 							sx={{ display: { xs: "none", md: "block" } }}>
-							<Link href='/blog' passHref>
+							<Link href='/bai-viet' passHref>
 								<Typography
 									color='error'
 									variant='body1'
