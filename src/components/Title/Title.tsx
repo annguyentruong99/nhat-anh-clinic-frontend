@@ -8,16 +8,27 @@ interface Props {
 	title2?: string;
 	variant?: Variant;
 	sx?: SxProps;
+	inline?: boolean;
 }
 
-const Title: React.FC<Props> = ({ title1, title2, variant = "h3", sx }) => {
+const Title: React.FC<Props> = ({
+	title1,
+	title2,
+	variant = "h3",
+	sx,
+	inline = true,
+}) => {
 	return (
 		<>
-			<Title1 variant={variant} sx={sx}>
+			<Title1
+				variant={variant}
+				sx={{ ...sx, display: inline ? "inline" : "block" }}>
 				{title1 + " "}
 			</Title1>
 			{Boolean(title2) && (
-				<Title2 variant={variant} sx={sx}>
+				<Title2
+					variant={variant}
+					sx={{ ...sx, display: inline ? "inline" : "block" }}>
 					{title2}
 				</Title2>
 			)}
