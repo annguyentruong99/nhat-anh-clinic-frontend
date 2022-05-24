@@ -2,6 +2,7 @@ import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import { CoreApi } from "src/lib/core-api";
 import { API_ENDPOINTS } from "src/lib/endpoints";
 import { getModulesMap } from "src/utils";
+import ModulePage from "src/modules";
 
 const Home = ({
 	pageData,
@@ -13,17 +14,7 @@ const Home = ({
 
 	const modulesMap = getModulesMap(modules, services, posts, doctors);
 
-	if (!modules) return null;
-
-	return modules.map((module, ind) => {
-		if (!module?.__component) return null;
-		const Module = modulesMap[module.__component].component;
-		if (!Module) {
-			console.error(`Unexpected Module ${module.__component}`);
-			return null;
-		}
-		return <Module key={ind} {...modulesMap[module.__component].props} />;
-	});
+	return <ModulePage modules={modules} modulesMap={modulesMap} />;
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {

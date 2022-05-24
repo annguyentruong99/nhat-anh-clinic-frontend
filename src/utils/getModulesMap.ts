@@ -23,9 +23,9 @@ type ModulesMap = {
 
 export const getModulesMap = (
 	modules: any,
-	services: Services[],
-	posts: Posts[],
-	doctors: Doctors[],
+	services?: Services[],
+	posts?: Posts[],
+	doctors?: Doctors[],
 ): ModulesMap => ({
 	"modules.hero-banner": {
 		component: ModuleHeroBanner,
