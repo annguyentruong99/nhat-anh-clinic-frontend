@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://nhatanh.clinic
+
+# Sitemaps
+Sitemap: https://nhatanh.clinic/sitemap.xml

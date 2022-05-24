@@ -3,8 +3,8 @@ import { ReactNode } from "react";
 import Footer from "src/components/Footer";
 import Header from "src/components/Header";
 
-import { headerLinks } from "public/static/headerLinks";
-import { clinicInfo } from "public/static/clinicInfo";
+import { headerLinks } from "src/static/headerLinks";
+import { clinicInfo } from "src/static/clinicInfo";
 
 interface Props {
 	children: ReactNode;

@@ -2,7 +2,9 @@ import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import { CoreApi } from "src/lib/core-api";
 import { API_ENDPOINTS } from "src/lib/endpoints";
 import { getModulesMap } from "src/utils";
-import ModulePage from "src/modules";
+import ModulePage from "src/modules/index";
+import Page from "src/components/Page";
+import { useRouter } from "next/router";
 
 const Home = ({
 	pageData,
@@ -10,14 +12,19 @@ const Home = ({
 	doctors,
 	posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-	const { modules } = pageData;
+	const router = useRouter();
+	const { modules, seo } = pageData;
 
 	const modulesMap = getModulesMap(modules, services, posts, doctors);
 
-	return <ModulePage modules={modules} modulesMap={modulesMap} />;
+	return (
+		<Page title={seo.seoTitle} description={seo.seoDesc} router={router}>
+			<ModulePage modulesData={modules} modulesMapData={modulesMap} />
+		</Page>
+	);
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async () => {
 	const Pages = new CoreApi(API_ENDPOINTS.pages);
 	const Services = new CoreApi(API_ENDPOINTS.services);
 	const Doctors = new CoreApi(API_ENDPOINTS.doctors);
