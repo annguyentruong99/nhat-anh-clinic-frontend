@@ -3,7 +3,7 @@ import Link from "next/link";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
-import { footerLinks } from "public/static/footerLinks";
+import { footerLinks } from "src/static/footerLinks";
 
 const OurServices = () => {
 	return (
