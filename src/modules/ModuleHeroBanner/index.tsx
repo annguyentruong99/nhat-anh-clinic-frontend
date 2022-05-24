@@ -1,21 +1,17 @@
 import ImageText from "./ImageText";
 
-import { ModuleStyles, ModuleProps } from "./ModuleHeroBanner.types";
+import { ModuleProps } from "./ModuleHeroBanner.types";
 
 const stylesMap: { [style: string]: any } = {
 	"style-a": ImageText,
 };
 
 interface Props {
-	style?: ModuleStyles;
 	moduleProps: ModuleProps;
 }
 
-const ModuleHeroBanner: React.FC<Props> = ({
-	style = "style-a",
-	moduleProps,
-}) => {
-	const ModuleComponent = stylesMap[style];
+const ModuleHeroBanner: React.FC<Props> = ({ moduleProps }) => {
+	const ModuleComponent = stylesMap[moduleProps.style];
 
 	return <ModuleComponent {...moduleProps} />;
 };
