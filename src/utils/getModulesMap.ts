@@ -9,7 +9,7 @@ import { Doctors } from "src/typings/doctors.types";
 import { Posts } from "src/typings/posts.types";
 import { Services } from "src/typings/services.types";
 
-type ModulesMap = {
+export type ModulesMap = {
 	[component: string]: {
 		component: any;
 		props: {
@@ -23,9 +23,9 @@ type ModulesMap = {
 
 export const getModulesMap = (
 	modules: any,
-	services: Services[],
-	posts: Posts[],
-	doctors: Doctors[],
+	services?: Services[],
+	posts?: Posts[],
+	doctors?: Doctors[],
 ): ModulesMap => ({
 	"modules.hero-banner": {
 		component: ModuleHeroBanner,

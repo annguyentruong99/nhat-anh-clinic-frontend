@@ -1,4 +1,4 @@
-export type ModuleStyles = "style-a" | "style-b";
+export type ModuleStyles = "style-a" | "style-b" | "style-c";
 
 export type ModuleProps = {
 	subtitle?: string;
@@ -14,6 +14,7 @@ export type ModuleProps = {
 		};
 	};
 	description?: string;
+	style: ModuleStyles;
 	cta?: {
 		content: string;
 		link: string;
