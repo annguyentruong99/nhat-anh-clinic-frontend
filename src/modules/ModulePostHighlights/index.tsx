@@ -13,21 +13,26 @@ interface Props {
 	posts: Posts[];
 }
 
-const ModulePostHighlights: React.FC<Props> = ({ moduleProps, posts }) => {
+const ModulePostHighlights: React.FC<Props> = ({
+	moduleProps: { heading },
+	posts,
+}) => {
 	const [postHighlights, setPostHighlights] = useState<Posts[] | null>(null);
 
 	useEffect(() => {
-		setPostHighlights(
-			posts.filter(
-				(post) => post.attributes.tags?.toLowerCase() === "sản phụ khoa",
-			),
-		);
+		if (Boolean(posts)) {
+			setPostHighlights(
+				posts.filter(
+					(post) => post.attributes.tags?.toLowerCase() === "sản phụ khoa",
+				),
+			);
+		}
 	}, [posts]);
 
 	return (
 		<StyledBox>
 			<Container>
-				<Typography variant='h3'>{moduleProps.heading.title}</Typography>
+				<Typography variant='h3'>{heading.title}</Typography>
 				<PostCardsContainer container spacing={3}>
 					{postHighlights?.slice(0, 2).map((post) => (
 						<Grid item xs={12} md={6} key={post.attributes.slug}>
