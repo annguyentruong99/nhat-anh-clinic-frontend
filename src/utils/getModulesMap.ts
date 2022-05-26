@@ -44,7 +44,7 @@ export const getModulesMap = (
 			moduleProps: modules.find(
 				(module: any) => module.__component === "modules.services-slider",
 			),
-			services: Boolean(services) ? services : undefined,
+			services: services,
 		},
 	},
 	"modules.doctors-slider": {
@@ -53,7 +53,7 @@ export const getModulesMap = (
 			moduleProps: modules.find(
 				(module: any) => module.__component === "modules.doctors-slider",
 			),
-			doctors: Boolean(doctors) ? doctors : undefined,
+			doctors: doctors,
 		},
 	},
 	"modules.why-choose-us": {
@@ -78,7 +78,7 @@ export const getModulesMap = (
 			moduleProps: modules.find(
 				(module: any) => module.__component === "modules.blog-tabs",
 			),
-			posts: Boolean(posts) ? posts : undefined,
+			posts: posts,
 		},
 	},
 	"modules.post-highlights": {
@@ -87,7 +87,7 @@ export const getModulesMap = (
 			moduleProps: modules.find(
 				(module: any) => module.__component === "modules.post-highlights",
 			),
-			posts: Boolean(posts) ? posts : undefined,
+			posts: posts,
 		},
 	},
 	"modules.newest-posts": {
@@ -96,7 +96,7 @@ export const getModulesMap = (
 			moduleProps: modules.find(
 				(module: any) => module.__component === "modules.newest-posts",
 			),
-			posts: Boolean(posts) ? posts : undefined,
+			posts: posts,
 		},
 	},
 	"modules.ads": {

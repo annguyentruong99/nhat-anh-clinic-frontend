@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SectionHeading from "src/components/SectionHeading";
 import { ModuleProps } from "./ModuleBlogTabs.types";
 import { Posts } from "src/typings/posts.types";
@@ -34,6 +34,13 @@ const ModuleBlogTabs: React.FC<Props> = ({
 	const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
 
 	const [value, setValue] = useState(0);
+	const [postsData, setPostsData] = useState<Posts[]>([]);
+
+	useEffect(() => {
+		if (Boolean(posts.length)) {
+			setPostsData(posts);
+		}
+	}, [posts]);
 
 	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
 		setValue(newValue);
@@ -80,7 +87,7 @@ const ModuleBlogTabs: React.FC<Props> = ({
 
 					<TabPanel value={value} index={0}>
 						<Grid container spacing={2}>
-							{posts
+							{postsData
 								.filter((post) => post.attributes.tags === "Sản phụ khoa")
 								.slice(0, 6)
 								.map((post) => (
@@ -94,7 +101,7 @@ const ModuleBlogTabs: React.FC<Props> = ({
 					</TabPanel>
 					<TabPanel value={value} index={1}>
 						<Grid container spacing={2}>
-							{posts.slice(0, 6).map((post) => (
+							{postsData.slice(0, 6).map((post) => (
 								<Grid item xs={12} md={4} key={post.attributes.slug}>
 									<Box sx={{ marginTop: "20px" }}>
 										<PostCard post={post} />

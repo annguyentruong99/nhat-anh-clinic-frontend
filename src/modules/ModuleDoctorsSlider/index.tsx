@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Doctors } from "src/typings/doctors.types";
 import { ModuleProps } from "./ModuleDoctorsSlider.types";
 import { StyledBox } from "./styles";
@@ -20,6 +21,14 @@ const ModuleDoctorsSlider: React.FC<Props> = ({
 	const theme = useTheme();
 	const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
 
+	const [doctorsData, setDoctorsData] = useState<Doctors[]>([]);
+
+	useEffect(() => {
+		if (Boolean(doctors.length)) {
+			setDoctorsData(doctors);
+		}
+	}, [doctors]);
+
 	return (
 		<StyledBox>
 			<Container>
@@ -27,7 +36,7 @@ const ModuleDoctorsSlider: React.FC<Props> = ({
 					heading={heading}
 					align={isDesktop ? "center" : "left"}
 				/>
-				<DoctorsCarousel doctors={doctors} />
+				<DoctorsCarousel doctors={doctorsData} />
 			</Container>
 		</StyledBox>
 	);
