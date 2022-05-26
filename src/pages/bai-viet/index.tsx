@@ -4,6 +4,7 @@ import Page from "src/components/Page";
 import { CoreApi } from "src/lib/core-api";
 import { API_ENDPOINTS } from "src/lib/endpoints";
 import ModulePage from "src/modules";
+import ModulePostHighlights from "src/modules/ModulePostHighlights";
 import { getModulesMap } from "src/utils";
 
 const Blog = ({
@@ -13,7 +14,7 @@ const Blog = ({
 	const router = useRouter();
 	const { seo, modules } = pageData;
 
-	const modulesMap = getModulesMap(modules, posts);
+	const modulesMap = getModulesMap(modules, undefined, posts, undefined);
 
 	return (
 		<Page title={seo.seoTitle} description={seo.seoDesc} router={router}>
