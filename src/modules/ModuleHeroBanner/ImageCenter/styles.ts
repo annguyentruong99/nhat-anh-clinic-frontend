@@ -3,11 +3,11 @@ import Box from "@mui/material/Box";
 
 export const StyledBox = styled(Box)(({ theme }) => ({
 	backgroundColor: theme.palette.primary.light,
-	height: "276px",
+	maxHeight: "276px",
 	marginBottom: "60px",
 
 	[theme.breakpoints.up("md")]: {
-		height: "670px",
+		maxHeight: "670px",
 		marginBottom: "132px",
 	},
 }));
@@ -20,6 +20,20 @@ export const TitleContainer = styled(Box)(({ theme }) => ({
 	},
 }));
 
+export const SearchBarContainer = styled(Box)(({ theme }) => ({
+	display: "none",
+
+	[theme.breakpoints.up("md")]: {
+		display: "block",
+		maxWidth: "750px",
+		marginTop: "40px",
+	},
+}));
+
 export const ImageContainer = styled(Box)(({ theme }) => ({
-	paddingTop: "132px",
+	marginTop: "20px",
+
+	[theme.breakpoints.up("md")]: {
+		marginTop: "40px",
+	},
 }));
