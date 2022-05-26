@@ -3,6 +3,7 @@ import { Posts } from "src/typings/posts.types";
 import PostCard from "src/components/PostCard";
 import { StyledBox, PostCardsContainer } from "./styles";
 import { ModuleProps } from "./ModulePostHighlights.types";
+import { usePostQuery } from "src/hooks";
 
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
@@ -17,6 +18,7 @@ const ModulePostHighlights: React.FC<Props> = ({
 	moduleProps: { heading },
 	posts,
 }) => {
+	const { query } = usePostQuery();
 	const [postHighlights, setPostHighlights] = useState<Posts[] | null>(null);
 
 	useEffect(() => {
@@ -30,7 +32,7 @@ const ModulePostHighlights: React.FC<Props> = ({
 	}, [posts]);
 
 	return (
-		<StyledBox>
+		<StyledBox sx={{ display: Boolean(query.length) ? "none" : undefined }}>
 			<Container>
 				<Typography variant='h3'>{heading.title}</Typography>
 				<PostCardsContainer container spacing={3}>

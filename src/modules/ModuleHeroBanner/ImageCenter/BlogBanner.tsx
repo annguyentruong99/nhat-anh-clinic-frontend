@@ -1,7 +1,15 @@
+import { useState } from "react";
 import Image from "next/image";
 import { ModuleProps } from "../ModuleHeroBanner.types";
+import { usePostQuery } from "src/hooks";
 import Title from "src/components/Title";
-import { StyledBox, TitleContainer, ImageContainer } from "./styles";
+import SearchBar from "src/components/SearchBar";
+import {
+	StyledBox,
+	TitleContainer,
+	SearchBarContainer,
+	ImageContainer,
+} from "./styles";
 
 import Container from "@mui/material/Container";
 import { useTheme } from "@mui/material/styles";
@@ -17,6 +25,9 @@ const BlogBanner: React.FC<ModuleProps> = ({
 }) => {
 	const theme = useTheme();
 	const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
+
+	const { query, setQuery } = usePostQuery();
+	const [inputValue, setInputValue] = useState("");
 
 	return (
 		<StyledBox
@@ -38,6 +49,15 @@ const BlogBanner: React.FC<ModuleProps> = ({
 						inline={isDesktop}
 					/>
 				</TitleContainer>
+
+				<SearchBarContainer>
+					<SearchBar
+						inputValue={inputValue}
+						setInputValue={setInputValue}
+						setSearchValue={setQuery}
+					/>
+				</SearchBarContainer>
+
 				<ImageContainer>
 					<Image
 						src={
@@ -47,7 +67,9 @@ const BlogBanner: React.FC<ModuleProps> = ({
 						}
 						alt={alternativeText}
 						width='1240'
-						height='500'
+						height={isDesktop ? "500" : "700"}
+						objectFit='cover'
+						objectPosition='top'
 					/>
 				</ImageContainer>
 			</Container>

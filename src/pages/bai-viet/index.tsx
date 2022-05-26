@@ -4,8 +4,8 @@ import Page from "src/components/Page";
 import { CoreApi } from "src/lib/core-api";
 import { API_ENDPOINTS } from "src/lib/endpoints";
 import ModulePage from "src/modules";
-import ModulePostHighlights from "src/modules/ModulePostHighlights";
 import { getModulesMap } from "src/utils";
+import { PostQueryProvider } from "src/contexts/PostQueryContext";
 
 const Blog = ({
 	pageData,
@@ -18,7 +18,9 @@ const Blog = ({
 
 	return (
 		<Page title={seo.seoTitle} description={seo.seoDesc} router={router}>
-			<ModulePage modulesData={modules} modulesMapData={modulesMap} />
+			<PostQueryProvider>
+				<ModulePage modulesData={modules} modulesMapData={modulesMap} />
+			</PostQueryProvider>
 		</Page>
 	);
 };

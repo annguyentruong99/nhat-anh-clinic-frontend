@@ -1,5 +1,6 @@
 import { ModuleProps } from "./ModuleAds.types";
 import { StyledBox, AdBannerContainer } from "./styles";
+import { usePostQuery } from "src/hooks";
 import AdBanner from "src/components/AdBanner";
 
 import Container from "@mui/material/Container";
@@ -10,8 +11,10 @@ interface Props {
 }
 
 const ModuleAds: React.FC<Props> = ({ moduleProps: { heading, ads } }) => {
+	const { query } = usePostQuery();
+
 	return (
-		<StyledBox>
+		<StyledBox sx={{ display: Boolean(query.length) ? "none" : undefined }}>
 			<Container>
 				<Typography variant='h3'>{heading.title}</Typography>
 				{ads.map((ad, ind) => (

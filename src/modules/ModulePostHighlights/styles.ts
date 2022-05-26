@@ -3,10 +3,10 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 
 export const StyledBox = styled(Box)(({ theme }) => ({
-	marginTop: "40px",
+	paddingTop: "40px",
 
 	[theme.breakpoints.up("md")]: {
-		marginTop: "50px",
+		paddingTop: "50px",
 	},
 }));
 
