@@ -23,6 +23,8 @@ interface Props {
 			cover: Cover;
 		};
 	};
+	ctaContent?: string;
+	alwayShowCta?: boolean;
 }
 
 const PostCard: React.FC<Props> = ({
@@ -38,6 +40,8 @@ const PostCard: React.FC<Props> = ({
 			},
 		},
 	},
+	ctaContent = "XEM CHI TIẾT",
+	alwayShowCta = false,
 }) => {
 	const [previewPhrase, setPreviewPhrase] = useState("");
 
@@ -73,8 +77,9 @@ const PostCard: React.FC<Props> = ({
 				</Link>
 				<PreviewContent variant='body2'>{previewPhrase}</PreviewContent>
 			</StyledCardContent>
-			<StyledCardActions>
-				<Button href={`/bai-viet/${slug}`}>XEM CHI TIẾT</Button>
+			<StyledCardActions
+				sx={{ display: { md: alwayShowCta ? "block" : "none" } }}>
+				<Button href={`/bai-viet/${slug}`}>{ctaContent}</Button>
 			</StyledCardActions>
 		</StyledCard>
 	);
