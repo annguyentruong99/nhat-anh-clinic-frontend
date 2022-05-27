@@ -1,8 +1,11 @@
 import React from "react";
 import ModuleAchievements from "src/modules/ModuleAchievements";
+import ModuleAds from "src/modules/ModuleAds";
 import ModuleBlogTabs from "src/modules/ModuleBlogTabs";
 import ModuleDoctorsSlider from "src/modules/ModuleDoctorsSlider";
 import ModuleHeroBanner from "src/modules/ModuleHeroBanner";
+import ModuleNewestPosts from "src/modules/ModuleNewestPosts";
+import ModulePostHighlights from "src/modules/ModulePostHighlights";
 import ModuleServicesSlider from "src/modules/ModuleServicesSlider";
 import ModuleWhyChooseUs from "src/modules/ModuleWhyChooseUs";
 import { Doctors } from "src/typings/doctors.types";
@@ -76,6 +79,32 @@ export const getModulesMap = (
 				(module: any) => module.__component === "modules.blog-tabs",
 			),
 			posts: posts,
+		},
+	},
+	"modules.post-highlights": {
+		component: ModulePostHighlights,
+		props: {
+			moduleProps: modules.find(
+				(module: any) => module.__component === "modules.post-highlights",
+			),
+			posts: posts,
+		},
+	},
+	"modules.newest-posts": {
+		component: ModuleNewestPosts,
+		props: {
+			moduleProps: modules.find(
+				(module: any) => module.__component === "modules.newest-posts",
+			),
+			posts: posts,
+		},
+	},
+	"modules.ads": {
+		component: ModuleAds,
+		props: {
+			moduleProps: modules.find(
+				(module: any) => module.__component === "modules.ads",
+			),
 		},
 	},
 });

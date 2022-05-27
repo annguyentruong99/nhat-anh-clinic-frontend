@@ -1,3 +1,5 @@
+import { Cover } from "src/typings/common.types";
+
 export type ModuleStyles = "style-a" | "style-b" | "style-c";
 
 export type ModuleProps = {
@@ -6,13 +8,7 @@ export type ModuleProps = {
 		title1: string;
 		title2: string;
 	};
-	cover: {
-		data: {
-			attributes: {
-				url: string;
-			};
-		};
-	};
+	cover: Cover;
 	description?: string;
 	style: ModuleStyles;
 	cta?: {

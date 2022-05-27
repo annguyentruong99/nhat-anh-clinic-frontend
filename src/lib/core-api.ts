@@ -56,6 +56,6 @@ export class CoreApi {
 	}
 
 	findOne(id: number) {
-		return this.http.get(`${this._basePath}/${id}&populate=deep,10`);
+		return this.http.get(`${this._basePath}/${id}?populate=deep,10`);
 	}
 }

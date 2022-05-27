@@ -13,6 +13,6 @@ export const headerLinks = [
 	},
 	{
 		title: "Tin tức & Thông tin",
-		href: "/blog",
+		href: "/bai-viet",
 	},
 ];

@@ -30,9 +30,15 @@ const DoctorsCarousel: React.FC<Props> = ({ doctors }) => {
 		setSwiper(document.querySelector(".doctors-carousel")?.swiper);
 	}, []);
 
-	const [slides, setSlides] = useState(
-		doctors.map((doctor, ind) => <DoctorCard key={ind} doctor={doctor} />),
-	);
+	const [slides, setSlides] = useState<JSX.Element[]>([]);
+
+	useEffect(() => {
+		if (Boolean(doctors.length)) {
+			setSlides(
+				doctors.map((doctor, ind) => <DoctorCard key={ind} doctor={doctor} />),
+			);
+		}
+	}, [doctors]);
 
 	const appendNumber = useRef(doctors.length);
 

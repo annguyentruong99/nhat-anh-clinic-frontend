@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import SectionHeading from "src/components/SectionHeading";
 import ServicesCarousel from "src/components/ServicesCarousel";
 import { Services } from "src/typings/services.types";
@@ -20,6 +21,14 @@ const ModuleServicesSlider: React.FC<Props> = ({
 	const theme = useTheme();
 	const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
 
+	const [servicesData, setServicesData] = useState<Services[]>([]);
+
+	useEffect(() => {
+		if (Boolean(services.length)) {
+			setServicesData(services);
+		}
+	}, [services]);
+
 	return (
 		<Box>
 			<Container>
@@ -27,7 +36,7 @@ const ModuleServicesSlider: React.FC<Props> = ({
 					heading={heading}
 					align={isDesktop ? "center" : "left"}
 				/>
-				<ServicesCarousel services={services} />
+				<ServicesCarousel services={servicesData} />
 			</Container>
 		</Box>
 	);

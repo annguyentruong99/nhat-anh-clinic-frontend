@@ -47,12 +47,5 @@ export const PreviewContent = styled(Typography)(({ theme }) => ({
 export const StyledCardActions = styled(CardActions)(({ theme }) => ({
 	width: "100%",
 	padding: "0 24px 24px 24px",
-
-	[theme.breakpoints.up("sm")]: {
-		width: "60%",
-	},
-
-	[theme.breakpoints.up("md")]: {
-		display: "none",
-	},
+	width: "60%",
 }));

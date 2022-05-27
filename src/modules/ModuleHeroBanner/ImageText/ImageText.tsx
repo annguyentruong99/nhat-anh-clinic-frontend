@@ -1,12 +1,7 @@
-import Image from "next/image";
-
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
 
 import Button from "src/components/Button";
-
-import Banner from "public/assets/Banner.png";
 
 import { ModuleProps } from "../ModuleHeroBanner.types";
 

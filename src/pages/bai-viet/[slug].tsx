@@ -46,12 +46,12 @@ const BlogPost = ({
 						<Breadcrumbs
 							data={[
 								{
-									name: "Blog",
-									link: "/blog",
+									name: "Bài viết",
+									link: "/bai-viet",
 								},
 								{
 									name: post.attributes.title,
-									link: `/blog/${post.attributes.slug}`,
+									link: `/bai-viet/${post.attributes.slug}`,
 								},
 							]}
 						/>
