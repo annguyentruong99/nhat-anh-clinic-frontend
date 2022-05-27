@@ -30,7 +30,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	const Doctors = new CoreApi(API_ENDPOINTS.doctors);
 	const Posts = new CoreApi(API_ENDPOINTS.posts);
 
-	const { data: pageData } = await Pages.findAll();
+	const { data: pageData } = await Pages.findOne(1);
 
 	const { data: services } = await Services.findAll();
 
@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 	return {
 		props: {
-			pageData: pageData.data[0].attributes,
+			pageData: pageData.data.attributes,
 			services: services.data,
 			doctors: doctors.data,
 			posts: posts.data,

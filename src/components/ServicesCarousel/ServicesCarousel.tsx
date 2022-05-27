@@ -13,7 +13,7 @@ import ServiceCard from "src/components/ServiceCard";
 
 import { SxProps, Theme, useMediaQuery, useTheme } from "@mui/material";
 import Box from "@mui/material/Box";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Services } from "src/typings/services.types";
 
 interface Props {
@@ -30,11 +30,17 @@ const ServicesCarousel: React.FC<Props> = ({ services }) => {
 		setSwiper(document.querySelector(".services-carousel")?.swiper);
 	}, []);
 
-	const [slides, setSlides] = useState(
-		services.map((service, ind) => (
-			<ServiceCard key={ind} service={service} index={ind + 1} />
-		)),
-	);
+	const [slides, setSlides] = useState<JSX.Element[]>([]);
+
+	useEffect(() => {
+		if (Boolean(services.length)) {
+			setSlides(
+				services.map((service, ind) => (
+					<ServiceCard key={ind} service={service} index={ind + 1} />
+				)),
+			);
+		}
+	}, [services]);
 
 	const appendNumber = useRef(services.length);
 

@@ -29,7 +29,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 	const Posts = new CoreApi(API_ENDPOINTS.posts);
 	const Pages = new CoreApi(API_ENDPOINTS.pages);
 
-	const { data: pageData } = await Pages.findAll();
+	const { data: pageData } = await Pages.findOne(2);
 
 	const { data: posts } = await Posts.findAll({
 		sort: {
@@ -40,7 +40,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 	return {
 		props: {
-			pageData: pageData.data[1].attributes,
+			pageData: pageData.data.attributes,
 			posts: posts.data,
 		},
 	};
