@@ -25,6 +25,7 @@ const BlogBanner: React.FC<ModuleProps> = ({
 }) => {
 	const theme = useTheme();
 	const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
+	const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
 
 	const { query, setQuery } = usePostQuery();
 	const [inputValue, setInputValue] = useState("");
@@ -68,9 +69,9 @@ const BlogBanner: React.FC<ModuleProps> = ({
 						}
 						alt={alternativeText}
 						width='1240'
-						height={isDesktop ? "500" : "700"}
+						height={isDesktop ? "500" : isTablet ? "300" : "700"}
 						objectFit='cover'
-						objectPosition='top'
+						objectPosition='center'
 					/>
 				</ImageContainer>
 			</Container>
