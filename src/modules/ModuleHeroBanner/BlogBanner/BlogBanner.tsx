@@ -54,6 +54,7 @@ const BlogBanner: React.FC<ModuleProps> = ({
 					<SearchBar
 						inputValue={inputValue}
 						setInputValue={setInputValue}
+						searchValue={query}
 						setSearchValue={setQuery}
 					/>
 				</SearchBarContainer>

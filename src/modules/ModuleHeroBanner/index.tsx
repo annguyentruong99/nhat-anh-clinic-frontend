@@ -1,11 +1,11 @@
 import ImageText from "./ImageText";
-import ImageCenter from "./ImageCenter";
+import BlogBanner from "./BlogBanner";
 
 import { ModuleProps } from "./ModuleHeroBanner.types";
 
 const stylesMap: { [style: string]: any } = {
 	"style-a": ImageText,
-	"style-b": ImageCenter,
+	"style-b": BlogBanner,
 };
 
 interface Props {

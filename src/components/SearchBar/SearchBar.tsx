@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
 import FormControl from "@mui/material/FormControl";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -6,16 +6,19 @@ import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import ClearRoundedIcon from "@mui/icons-material/ClearRounded";
 
 interface Props {
 	inputValue: string;
 	setInputValue: Dispatch<SetStateAction<string>>;
+	searchValue: string;
 	setSearchValue: Dispatch<SetStateAction<string>>;
 }
 
 const SearchBar: React.FC<Props> = ({
 	inputValue,
 	setInputValue,
+	searchValue,
 	setSearchValue,
 }) => {
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,6 +27,11 @@ const SearchBar: React.FC<Props> = ({
 
 	const handleSearchClick = () => {
 		setSearchValue(inputValue);
+	};
+
+	const handleClearSearchValue = () => {
+		setSearchValue("");
+		setInputValue("");
 	};
 
 	const handleEnterPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -48,8 +56,18 @@ const SearchBar: React.FC<Props> = ({
 				onKeyPress={handleEnterPress}
 				endAdornment={
 					<InputAdornment position='end'>
-						<IconButton onClick={handleSearchClick} edge='end'>
-							<SearchOutlinedIcon />
+						<IconButton
+							onClick={
+								Boolean(searchValue.length)
+									? handleClearSearchValue
+									: handleSearchClick
+							}
+							edge='end'>
+							{Boolean(searchValue.length) ? (
+								<ClearRoundedIcon />
+							) : (
+								<SearchOutlinedIcon />
+							)}
 						</IconButton>
 					</InputAdornment>
 				}
