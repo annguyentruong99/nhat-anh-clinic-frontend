@@ -8,6 +8,8 @@ import { usePostQuery } from "src/hooks";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 interface Props {
 	moduleProps: ModuleProps;
@@ -18,6 +20,8 @@ const ModulePostHighlights: React.FC<Props> = ({
 	moduleProps: { heading },
 	posts,
 }) => {
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 	const { query } = usePostQuery();
 	const [postHighlights, setPostHighlights] = useState<Posts[] | null>(null);
 
@@ -38,14 +42,19 @@ const ModulePostHighlights: React.FC<Props> = ({
 				<PostCardsContainer container spacing={3}>
 					{postHighlights?.slice(0, 2).map((post) => (
 						<Grid item xs={12} md={6} key={post.attributes.slug}>
-							<PostCard post={post} alwayShowCta ctaContent='ĐỌC THÊM' />
+							<PostCard
+								post={post}
+								alwayShowCta={!isMobile}
+								ctaContent={!isMobile ? "ĐỌC THÊM" : undefined}
+							/>
 						</Grid>
 					))}
-					{postHighlights?.slice(2, 5).map((post) => (
-						<Grid item xs={12} md={4} key={post.attributes.slug}>
-							<PostCard post={post} />
-						</Grid>
-					))}
+					{!isMobile &&
+						postHighlights?.slice(2, 5).map((post) => (
+							<Grid item xs={12} md={4} key={post.attributes.slug}>
+								<PostCard post={post} />
+							</Grid>
+						))}
 				</PostCardsContainer>
 			</Container>
 		</StyledBox>

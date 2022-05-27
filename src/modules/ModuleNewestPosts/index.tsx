@@ -9,6 +9,8 @@ import { filterPostsData } from "src/utils";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 interface Props {
 	moduleProps: ModuleProps;
@@ -16,17 +18,19 @@ interface Props {
 }
 
 const ModuleNewestPosts: React.FC<Props> = ({ moduleProps, posts }) => {
-	const [newestPosts, setNewestPosts] = useState<Posts[] | null>(null);
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 	const { query } = usePostQuery();
+	const [newestPosts, setNewestPosts] = useState<Posts[] | null>(null);
 
 	useEffect(() => {
 		if (Boolean(posts) && !Boolean(query.length)) {
-			setNewestPosts(posts.slice(0, 6));
+			setNewestPosts(!isMobile ? posts.slice(0, 6) : posts.slice(0, 2));
 		}
 		if (Boolean(posts) && Boolean(query.length)) {
 			setNewestPosts(filterPostsData(query, posts));
 		}
-	}, [posts, query]);
+	}, [posts, query, isMobile]);
 
 	return (
 		<StyledBox
