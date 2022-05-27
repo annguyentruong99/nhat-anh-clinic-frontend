@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { StyledBox, LoaderContainer, StyledProgress } from "./styles";
-import Logo from "public/assets/Logo.jpg";
+import Logo from "public/assets/logo.jpg";
 
 const LoadingScreen: React.FC = () => {
 	return (
