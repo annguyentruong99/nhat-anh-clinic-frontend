@@ -1,9 +1,6 @@
 import { Cover } from "./common.types";
 
-export type ServiceTypes =
-	| "kham_chuyen_khoa"
-	| "Kham_ki_thuat"
-	| "kham_dich_vu";
+export type ServiceTypes = "Khám chuyên khoa" | "Khám kĩ thuật" | "Khám dịch vụ";
 
 export interface Services {
 	attributes: {
