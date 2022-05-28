@@ -12,7 +12,7 @@ export const StyledCard = styled(Card)(({ theme }) => ({
 	border: `1px solid ${theme.palette.grey[200]}`,
 
 	[theme.breakpoints.up("md")]: {
-		width: "375px",
+		width: "100%",
 	},
 }));
 
@@ -21,7 +21,7 @@ export const StyledCardContent = styled(CardContent)({
 });
 
 export const StyledCardActions = styled(CardActions)({
-	padding: "32px 24px 24px 24px",
+	padding: "12px 24px 24px 24px",
 });
 
 export const Index = styled(Typography)(({ theme }) => ({
@@ -40,15 +40,17 @@ export const Highlight = styled(Typography)(({ theme }) => ({
 }));
 
 export const StyledList = styled(List)(({ theme }) => ({
-	minHeight: "84px",
+	minHeight: "104px",
 	marginTop: "8px",
 }));
 
 export const StyledListItem = styled(ListItem)(({ theme }) => ({
 	padding: 0,
+	alignItems: "flex-start",
 }));
 
 export const StyledListItemIcon = styled(ListItemIcon)(({ theme }) => ({
 	minWidth: "fit-content",
 	marginRight: "4px",
+	paddingTop: "6px",
 }));

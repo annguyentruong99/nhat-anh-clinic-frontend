@@ -96,6 +96,11 @@ const ServicesCarousel: React.FC<Props> = ({
 					backgroundColor: "primary.darker",
 				},
 			},
+			"& .swiper-wrapper": {
+				"& .swiper-slide": {
+					maxWidth: "375px",
+				},
+			},
 		},
 	};
 
