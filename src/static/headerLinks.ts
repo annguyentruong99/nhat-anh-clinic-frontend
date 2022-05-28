@@ -8,10 +8,6 @@ export const headerLinks = [
 		href: "/dich-vu",
 	},
 	{
-		title: "Đội ngũ",
-		href: "/our-team",
-	},
-	{
 		title: "Tin tức & Thông tin",
 		href: "/bai-viet",
 	},

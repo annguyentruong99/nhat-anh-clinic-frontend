@@ -36,6 +36,7 @@ interface Props {
 		};
 	};
 	index?: number;
+	showIndex?: boolean;
 }
 
 const ServiceCard: React.FC<Props> = ({
@@ -52,6 +53,7 @@ const ServiceCard: React.FC<Props> = ({
 		},
 	},
 	index,
+	showIndex = true,
 }) => (
 	<StyledCard>
 		<CardMedia
@@ -65,7 +67,9 @@ const ServiceCard: React.FC<Props> = ({
 			alt='Ảnh Dịch Vụ'
 		/>
 		<StyledCardContent>
-			{index && <Index variant='h1'>{convertSingleToDoubleDigit(index)}</Index>}
+			{index && showIndex ? (
+				<Index variant='h1'>{convertSingleToDoubleDigit(index)}</Index>
+			) : null}
 			<ServiceName variant='h3'>{name}</ServiceName>
 			<StyledList alignItems='flex-start' justifyContent='space-evenly'>
 				{highlights.map(({ text }, ind) => (

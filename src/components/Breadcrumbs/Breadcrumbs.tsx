@@ -8,7 +8,7 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 interface Props {
 	data: {
 		name: string;
-		link: string;
+		link?: string;
 	}[];
 }
 
@@ -20,7 +20,10 @@ const Breadcrumbs: React.FC<Props> = ({ data }) => {
 			{data.map((d, ind) => {
 				if (ind !== data.length - 1) {
 					return (
-						<Link passHref href={d.link} key={ind}>
+						<Link
+							passHref
+							href={Boolean(d.link) ? d.link : undefined}
+							key={ind}>
 							<BreadCrumbLink variant='h3'>{d.name}</BreadCrumbLink>
 						</Link>
 					);

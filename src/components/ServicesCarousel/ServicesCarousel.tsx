@@ -18,9 +18,17 @@ import { Services } from "src/typings/services.types";
 
 interface Props {
 	services: Services[];
+	showPagination?: boolean;
+	showNavigation?: boolean;
+	indexSlides?: boolean;
 }
 
-const ServicesCarousel: React.FC<Props> = ({ services }) => {
+const ServicesCarousel: React.FC<Props> = ({
+	services,
+	showPagination = true,
+	showNavigation = true,
+	indexSlides = true,
+}) => {
 	const theme = useTheme();
 	const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
 
@@ -34,13 +42,30 @@ const ServicesCarousel: React.FC<Props> = ({ services }) => {
 
 	useEffect(() => {
 		if (Boolean(services.length)) {
-			setSlides(
-				services.map((service, ind) => (
-					<ServiceCard key={ind} service={service} index={ind + 1} />
-				)),
-			);
+			if (services.length <= 2) {
+				setSlides([
+					...services.map((service, ind) => (
+						<ServiceCard
+							key={ind}
+							service={service}
+							index={indexSlides ? ind + 1 : undefined}
+						/>
+					)),
+					<span key={++appendNumber.current}></span>,
+				]);
+			} else {
+				setSlides(
+					services.map((service, ind) => (
+						<ServiceCard
+							key={ind}
+							service={service}
+							index={indexSlides ? ind + 1 : undefined}
+						/>
+					)),
+				);
+			}
 		}
-	}, [services]);
+	}, [services, indexSlides]);
 
 	const appendNumber = useRef(services.length);
 
@@ -58,7 +83,7 @@ const ServicesCarousel: React.FC<Props> = ({ services }) => {
 
 	const paginationStyles: SxProps<Theme> = {
 		"& .swiper": {
-			height: "565px",
+			height: showPagination && showNavigation ? "565px" : "500px",
 
 			"& .swiper-scrollbar": {
 				width: "88px",
@@ -69,6 +94,11 @@ const ServicesCarousel: React.FC<Props> = ({ services }) => {
 				"& .swiper-scrollbar-drag": {
 					width: `${88 / slides.length}px`,
 					backgroundColor: "primary.darker",
+				},
+			},
+			"& .swiper-wrapper": {
+				"& .swiper-slide": {
+					maxWidth: "375px",
 				},
 			},
 		},
@@ -95,11 +125,13 @@ const ServicesCarousel: React.FC<Props> = ({ services }) => {
 		watchOverflow: true,
 		modules: [Scrollbar, Virtual],
 		virtual: true,
-		scrollbar: {
-			draggable: true,
-			hide: false,
-			snapOnRelease: true,
-		},
+		scrollbar: showPagination
+			? {
+					draggable: true,
+					hide: false,
+					snapOnRelease: true,
+			  }
+			: false,
 		onReachEnd: (swiper) => {
 			if (!isDesktop && swiper.isEnd) {
 				appendSlide();
