@@ -147,10 +147,9 @@ const DesktopView: React.FC<Props> = ({
 							<li
 								key={tab.tabNum}
 								className={tab.tabNum === activeTab ? "active" : undefined}
-								style={{ cursor: "pointer" }}>
-								<Link onClick={() => setActiveTab(tab.tabNum)}>
-									{tab.title}
-								</Link>
+								style={{ cursor: "pointer" }}
+								onClick={() => setActiveTab(tab.tabNum)}>
+								<Link>{tab.title}</Link>
 							</li>
 						))}
 					</ul>
