@@ -6,6 +6,7 @@ import ModuleDoctorsSlider from "src/modules/ModuleDoctorsSlider";
 import ModuleHeroBanner from "src/modules/ModuleHeroBanner";
 import ModuleNewestPosts from "src/modules/ModuleNewestPosts";
 import ModulePostHighlights from "src/modules/ModulePostHighlights";
+import ModuleServicesList from "src/modules/ModuleServicesList";
 import ModuleServicesSlider from "src/modules/ModuleServicesSlider";
 import ModuleWhyChooseUs from "src/modules/ModuleWhyChooseUs";
 import { Doctors } from "src/typings/doctors.types";
@@ -105,6 +106,15 @@ export const getModulesMap = (
 			moduleProps: modules.find(
 				(module: any) => module.__component === "modules.ads",
 			),
+		},
+	},
+	"modules.services-list": {
+		component: ModuleServicesList,
+		props: {
+			moduleProps: modules.find(
+				(module: any) => module.__component === "modules.services-list",
+			),
+			services: services,
 		},
 	},
 });
