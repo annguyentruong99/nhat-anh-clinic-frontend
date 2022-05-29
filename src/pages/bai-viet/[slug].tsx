@@ -31,72 +31,63 @@ const BlogPost = ({
 	const router = useRouter();
 
 	return (
-		<React.Fragment>
-			<Page
-				title={`${post.attributes.title} | Phòng Khám Đa Khoa Nhật Anh`}
-				description='Phòng Khám Đa Khoa Nhật Anh'
-				router={router}>
-				<ArticleSeo post={post} />
-				<Box
-					sx={{
-						width: "100%",
-						height: "400px",
-						backgroundImage:
-							process.env.NODE_ENV === "production"
-								? `url(${post.attributes.cover.data.attributes.url})`
-								: `url(http://localhost:1337${post.attributes.cover.data.attributes.url})`,
-						backgroundRepeat: "no-repeat",
-						backgroundSize: "cover",
-						backgroundPosition: "center center",
-					}}
-				/>
-				<StyledContainer>
-					<Container>
-						<BreadcrumbsContainer>
-							<Breadcrumbs
-								data={[
-									{
-										name: "Bài viết",
-										link: "/bai-viet",
-									},
-									{
-										name: post.attributes.title,
-										link: `/bai-viet/${post.attributes.slug}`,
-									},
-								]}
-							/>
-						</BreadcrumbsContainer>
-						<Title variant='h1'>{post.attributes.title}</Title>
-						<PostContentContainer>
-							<ReactMarkdown>{post.attributes.content}</ReactMarkdown>
-						</PostContentContainer>
-						<PostSuggestionsContainer>
-							<PostSuggestions currentPost={post} posts={posts} />
-						</PostSuggestionsContainer>
-					</Container>
-				</StyledContainer>
-			</Page>
-		</React.Fragment>
+		<Page
+			title={`${post.attributes.title} | Phòng Khám Đa Khoa Nhật Anh`}
+			description='Phòng Khám Đa Khoa Nhật Anh'
+			router={router}>
+			<ArticleSeo post={post} />
+			<Box
+				sx={{
+					width: "100%",
+					height: "400px",
+					backgroundImage:
+						process.env.NODE_ENV === "production"
+							? `url(${post.attributes.cover.data.attributes.url})`
+							: `url(http://localhost:1337${post.attributes.cover.data.attributes.url})`,
+					backgroundRepeat: "no-repeat",
+					backgroundSize: "cover",
+					backgroundPosition: "center center",
+				}}
+			/>
+			<StyledContainer>
+				<Container>
+					<BreadcrumbsContainer>
+						<Breadcrumbs
+							data={[
+								{
+									name: "Bài viết",
+									link: "/bai-viet",
+								},
+								{
+									name: post.attributes.title,
+									link: `/bai-viet/${post.attributes.slug}`,
+								},
+							]}
+						/>
+					</BreadcrumbsContainer>
+					<Title variant='h1'>{post.attributes.title}</Title>
+					<PostContentContainer>
+						<ReactMarkdown>{post.attributes.content}</ReactMarkdown>
+					</PostContentContainer>
+					<PostSuggestionsContainer>
+						<PostSuggestions currentPost={post} posts={posts} />
+					</PostSuggestionsContainer>
+				</Container>
+			</StyledContainer>
+		</Page>
 	);
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const Posts = new CoreApi(API_ENDPOINTS.posts);
 
-	const { data: post } = await Posts.findAll({
-		sort: undefined,
-		filters: {
-			field: "slug",
-			operator: "$eq",
-			value: params?.slug as string,
-		},
-	});
-
 	const { data: posts } = await Posts.findAll();
 
 	return {
 		props: {
-			post: post?.data[0],
+			post: posts?.data.filter(
+				(post: Posts) => post.attributes.slug === params?.slug,
+			)[0],
 			posts: posts?.data,
 		},
 		revalidate: 1800,

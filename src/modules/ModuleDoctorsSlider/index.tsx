@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { Doctors } from "src/typings/doctors.types";
 import { ModuleProps } from "./ModuleDoctorsSlider.types";
-import { StyledBox } from "./styles";
 import DoctorsCarousel from "src/components/DoctorsCarousel";
 import SectionHeading from "src/components/SectionHeading";
 
+import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { useTheme } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -30,7 +30,7 @@ const ModuleDoctorsSlider: React.FC<Props> = ({
 	}, [doctors]);
 
 	return (
-		<StyledBox>
+		<Box>
 			<Container>
 				<SectionHeading
 					heading={heading}
@@ -38,7 +38,7 @@ const ModuleDoctorsSlider: React.FC<Props> = ({
 				/>
 				<DoctorsCarousel doctors={doctorsData} />
 			</Container>
-		</StyledBox>
+		</Box>
 	);
 };
 

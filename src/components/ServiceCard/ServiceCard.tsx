@@ -7,15 +7,11 @@ import {
 	StyledCardActions,
 	ServiceName,
 	Index,
-	Highlight,
-	StyledList,
-	StyledListItem,
-	StyledListItemIcon,
 } from "./styles";
+import ServiceHighlights from "../ServiceHighlights";
 
 import { convertSingleToDoubleDigit } from "src/utils";
 
-import Checkbox from "src/components/icons/Checkbox";
 import Button from "src/components/Button";
 
 interface Props {
@@ -31,6 +27,7 @@ interface Props {
 				};
 			};
 			highlights: {
+				id: number;
 				text: string;
 			}[];
 		};
@@ -71,18 +68,7 @@ const ServiceCard: React.FC<Props> = ({
 				<Index variant='h1'>{convertSingleToDoubleDigit(index)}</Index>
 			) : null}
 			<ServiceName variant='h3'>{name}</ServiceName>
-			<StyledList alignItems='flex-start' justifyContent='space-evenly'>
-				{highlights.map(({ text }, ind) => (
-					<StyledListItem key={ind}>
-						<StyledListItemIcon>
-							<Checkbox />
-						</StyledListItemIcon>
-						<ListItemText disableTypography>
-							<Highlight variant='body2'>{text}</Highlight>
-						</ListItemText>
-					</StyledListItem>
-				))}
-			</StyledList>
+			<ServiceHighlights highlights={highlights} />
 		</StyledCardContent>
 		<StyledCardActions>
 			<Button href={`/dich-vu/${slug}`}>XEM CHI TIẾT</Button>

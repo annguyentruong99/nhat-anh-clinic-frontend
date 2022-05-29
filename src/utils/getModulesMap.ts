@@ -6,6 +6,7 @@ import ModuleDoctorsSlider from "src/modules/ModuleDoctorsSlider";
 import ModuleHeroBanner from "src/modules/ModuleHeroBanner";
 import ModuleNewestPosts from "src/modules/ModuleNewestPosts";
 import ModulePostHighlights from "src/modules/ModulePostHighlights";
+import ModuleServiceInfo from "src/modules/ModuleServiceInfo";
 import ModuleServicesList from "src/modules/ModuleServicesList";
 import ModuleServicesSlider from "src/modules/ModuleServicesSlider";
 import ModuleWhyChooseUs from "src/modules/ModuleWhyChooseUs";
@@ -21,6 +22,10 @@ export type ModulesMap = {
 			services?: Services[];
 			doctors?: Doctors[];
 			posts?: Posts[];
+			highlights?: {
+				id: number;
+				text: string;
+			}[];
 		};
 	};
 };
@@ -30,6 +35,10 @@ export const getModulesMap = (
 	services?: Services[],
 	posts?: Posts[],
 	doctors?: Doctors[],
+	serviceHighlights?: {
+		id: number;
+		text: string;
+	}[],
 ): ModulesMap => ({
 	"modules.hero-banner": {
 		component: ModuleHeroBanner,
@@ -37,6 +46,9 @@ export const getModulesMap = (
 			moduleProps: modules.find(
 				(module: any) => module.__component === "modules.hero-banner",
 			),
+			highlights: Boolean(serviceHighlights?.length)
+				? serviceHighlights
+				: undefined,
 		},
 	},
 	"modules.services-slider": {
@@ -115,6 +127,14 @@ export const getModulesMap = (
 				(module: any) => module.__component === "modules.services-list",
 			),
 			services: services,
+		},
+	},
+	"modules.service-info": {
+		component: ModuleServiceInfo,
+		props: {
+			moduleProps: modules.find(
+				(module: any) => module.__component === "modules.service-info",
+			),
 		},
 	},
 });

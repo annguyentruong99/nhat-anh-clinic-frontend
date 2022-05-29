@@ -1,6 +1,7 @@
 import { Cover } from "src/typings/common.types";
+import { Services } from "src/typings/services.types";
 
-export type ModuleStyles = "style-a" | "style-b" | "style-c";
+export type ModuleStyles = "style-a" | "style-b" | "style-c" | "style-e";
 
 export type ModuleProps = {
 	subtitle?: string;
@@ -15,4 +16,8 @@ export type ModuleProps = {
 		content: string;
 		link: string;
 	};
+	highlights?: {
+		id: number;
+		text: string;
+	}[];
 };
