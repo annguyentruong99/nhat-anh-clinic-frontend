@@ -1,5 +1,7 @@
 import Head from "next/head";
 import { forwardRef, ReactNode } from "react";
+import CorporationSeo from "src/components/Seo/CorporationSeo";
+import LocalBusinessSeo from "../Seo/LocalBusiness";
 
 import Box, { BoxProps } from "@mui/material/Box";
 import { NextRouter } from "next/router";
@@ -31,6 +33,12 @@ const Page = forwardRef<HTMLDivElement, Props>(
 					<meta content={title} property='og:title' />
 					<meta content={description} property='og:description' />
 					<meta content={canonical} property='og:url' />
+					{url === "/" && (
+						<>
+							<LocalBusinessSeo />
+							<CorporationSeo />
+						</>
+					)}
 				</Head>
 
 				<Box ref={ref} {...other}>

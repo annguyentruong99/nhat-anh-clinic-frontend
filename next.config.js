@@ -11,6 +11,15 @@ const nextConfig = {
 	webpack(config) {
 		return config;
 	},
+	async redirects() {
+		return [
+			{
+				source: "/dashboard",
+				destination: "https://admin.nhatanh.clinic/dashboard",
+				permanent: true,
+			},
+		];
+	},
 };
 
 module.exports = nextConfig;

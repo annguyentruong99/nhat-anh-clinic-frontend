@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 
 import Logo from "../Logo";
 import MobileMenu from "./MobileMenu";
+import NavigationSeo from "../Seo/NavigationSeo";
 
 import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
@@ -21,6 +22,7 @@ const Header: React.FC<HeaderProps> = ({ menuList }) => {
 
 	return (
 		<Fragment>
+			<NavigationSeo links={menuList} />
 			<AppBar
 				position='sticky'
 				sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
