@@ -57,20 +57,14 @@ export const MobileNav = styled("nav")(({ theme }) => ({
 		"& li": {
 			margin: "16px 0",
 			padding: "16px 12px",
-			"& a": {
-				fontSize: "16px",
-				fontWeight: 500,
-				color: theme.palette.grey["300"],
-				textDecoration: "none",
-				width: "100%",
-			},
+			fontSize: "16px",
+			fontWeight: 500,
+			color: theme.palette.grey["300"],
 			'&[class="mobile-active"]': {
 				backgroundColor: theme.palette.primary.main,
 				borderRadius: "4px",
-				"& a": {
-					color: theme.palette.grey[0],
-					fontWeight: 700,
-				},
+				color: theme.palette.grey[0],
+				fontWeight: 700,
 			},
 		},
 	},

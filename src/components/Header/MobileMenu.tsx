@@ -40,11 +40,14 @@ const MobileMenu: React.FC<HeaderProps> = ({ menuList }) => {
 			<MobileNav>
 				<ul>
 					{menuList.map((item) => (
-						<li
-							key={item.href}
-							className={pathname === item.href ? "mobile-active" : undefined}>
-							<Link href={item.href}>{item.title}</Link>
-						</li>
+						<Link href={item.href} passHref key={item.href}>
+							<li
+								className={
+									pathname === item.href ? "mobile-active" : undefined
+								}>
+								{item.title}
+							</li>
+						</Link>
 					))}
 				</ul>
 			</MobileNav>
