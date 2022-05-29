@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 const LocalBusinessSeo = () => {
-	let data: Record<string, any> = {
+	const data: Record<string, any> = {
 		"@context": "https://schema.org",
 		"@type": "MedicalClinic",
 		name: "Phòng Khám Đa Khoa Nhật Anh",
