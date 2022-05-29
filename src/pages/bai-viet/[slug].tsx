@@ -81,20 +81,13 @@ const BlogPost = ({
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const Posts = new CoreApi(API_ENDPOINTS.posts);
 
-	const { data: post } = await Posts.findAll({
-		sort: undefined,
-		filters: {
-			field: "slug",
-			operator: "$eq",
-			value: params?.slug as string,
-		},
-	});
-
 	const { data: posts } = await Posts.findAll();
 
 	return {
 		props: {
-			post: post?.data[0],
+			post: posts?.data.filter(
+				(post: Posts) => post.attributes.slug === params?.slug,
+			)[0],
 			posts: posts?.data,
 		},
 		revalidate: 1800,
