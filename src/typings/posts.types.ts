@@ -7,5 +7,7 @@ export interface Posts {
 		content: string;
 		cover: Cover;
 		tags: string | null;
+		publishedAt?: string | Date;
+		updatedAt?: string | Date;
 	};
 }

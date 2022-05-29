@@ -15,6 +15,7 @@ import { CoreApi } from "src/lib/core-api";
 import { API_ENDPOINTS } from "src/lib/endpoints";
 import PostSuggestions from "src/components/PostSuggestions";
 import Breadcrumbs from "src/components/Breadcrumbs";
+import ArticleSeo from "src/components/Seo/ArticleSeo";
 
 import ReactMarkdown from "react-markdown";
 import Box from "@mui/material/Box";
@@ -27,6 +28,7 @@ const BlogPost = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
 	return (
 		<React.Fragment>
+			<ArticleSeo post={post} />
 			<Box
 				sx={{
 					width: "100%",
