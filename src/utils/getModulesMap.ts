@@ -21,6 +21,10 @@ export type ModulesMap = {
 			services?: Services[];
 			doctors?: Doctors[];
 			posts?: Posts[];
+			highlights?: {
+				id: number;
+				text: string;
+			}[];
 		};
 	};
 };
@@ -30,6 +34,10 @@ export const getModulesMap = (
 	services?: Services[],
 	posts?: Posts[],
 	doctors?: Doctors[],
+	serviceHighlights?: {
+		id: number;
+		text: string;
+	}[],
 ): ModulesMap => ({
 	"modules.hero-banner": {
 		component: ModuleHeroBanner,
@@ -37,6 +45,9 @@ export const getModulesMap = (
 			moduleProps: modules.find(
 				(module: any) => module.__component === "modules.hero-banner",
 			),
+			highlights: Boolean(serviceHighlights?.length)
+				? serviceHighlights
+				: undefined,
 		},
 	},
 	"modules.services-slider": {

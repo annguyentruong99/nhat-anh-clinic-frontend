@@ -3,9 +3,7 @@ import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
-import List from "@mui/material/Grid";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
+
 
 export const StyledCard = styled(Card)(({ theme }) => ({
 	width: "300px",
@@ -33,24 +31,4 @@ export const Index = styled(Typography)(({ theme }) => ({
 export const ServiceName = styled(Typography)(({ theme }) => ({
 	fontWeight: 600,
 	color: theme.palette.primary.darker,
-}));
-
-export const Highlight = styled(Typography)(({ theme }) => ({
-	color: theme.palette.grey[500],
-}));
-
-export const StyledList = styled(List)(({ theme }) => ({
-	minHeight: "104px",
-	marginTop: "8px",
-}));
-
-export const StyledListItem = styled(ListItem)(({ theme }) => ({
-	padding: 0,
-	alignItems: "flex-start",
-}));
-
-export const StyledListItemIcon = styled(ListItemIcon)(({ theme }) => ({
-	minWidth: "fit-content",
-	marginRight: "4px",
-	paddingTop: "6px",
 }));
