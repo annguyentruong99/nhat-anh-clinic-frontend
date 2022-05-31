@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { ModuleProps } from "./ModuleAds.types";
 import { StyledBox, AdBannerContainer } from "./styles";
 import { usePostQuery } from "src/hooks";
@@ -11,10 +12,19 @@ interface Props {
 }
 
 const ModuleAds: React.FC<Props> = ({ moduleProps: { heading, ads } }) => {
+	const router = useRouter();
 	const { query } = usePostQuery();
 
 	return (
-		<StyledBox sx={{ display: Boolean(query.length) ? "none" : undefined }}>
+		<StyledBox
+			sx={{
+				display:
+					Boolean(query.length) ||
+					router.query.viewAll === "bai-viet-moi" ||
+					router.query.viewAll === "bai-viet-noi-bat"
+						? "none"
+						: undefined,
+			}}>
 			<Container>
 				<Typography variant='h3'>{heading.title}</Typography>
 				{ads.map((ad, ind) => (
