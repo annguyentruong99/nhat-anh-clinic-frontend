@@ -5,6 +5,7 @@ instance_class: F2
 env_variables:
   NEXT_PUBLIC_REST_API_ENDPOINT: 'https://admin.nhatanh.clinic/api'
   NEXT_PUBLIC_BASE_URL: 'https://nhatanh.clinic'
+  NEXT_PUBLIC_GA_TRACKING_ID: 'G-7465SXCQC5'
 
 handlers:
 - url: /.*

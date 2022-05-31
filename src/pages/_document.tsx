@@ -1,9 +1,11 @@
 import React from "react";
+import Script from "next/script";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import createCache from "@emotion/cache";
 import palette from "src/theme/palette";
 import { CacheProvider } from "@emotion/react";
 import createEmotionServer from "@emotion/server/create-instance";
+import { GA_TRACKING_ID } from "src/lib/gtag";
 
 const createEmotionCache = () => createCache({ key: "css" });
 
@@ -107,6 +109,25 @@ export default class CustomDocument extends Document {
 						content='nhatanh,phong-kham,san-phu-khoa,sieu-am'
 					/>
 					<meta name='author' content='Nhat Anh General Clinic' />
+
+					{process.env.NODE_ENV === "production" && (
+						<>
+							<Script
+								src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+								strategy='afterInteractive'
+							/>
+							<Script id='google-analytics' strategy='afterInteractive'>
+								{`
+									window.dataLayer = window.dataLayer || [];
+									function gtag(){dataLayer.push(arguments);}
+									gtag('js', new Date());
+									gtag('config', '${GA_TRACKING_ID}', {
+										page_path: window.location.pathname,
+									});
+								`}
+							</Script>
+						</>
+					)}
 				</Head>
 				<body>
 					<Main />
