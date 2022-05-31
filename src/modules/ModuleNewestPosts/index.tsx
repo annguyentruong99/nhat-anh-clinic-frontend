@@ -29,11 +29,13 @@ const ModuleNewestPosts: React.FC<Props> = ({ moduleProps, posts }) => {
 		}
 		if (Boolean(posts) && Boolean(query.length)) {
 			setNewestPosts(filterPostsData(query, posts));
+			document.getElementById("posts-container")?.scrollIntoView();
 		}
 	}, [posts, query, isMobile]);
 
 	return (
 		<StyledBox
+			id='posts-container'
 			sx={{
 				marginBottom: Boolean(query.length)
 					? { xs: "40px", md: "100px" }
