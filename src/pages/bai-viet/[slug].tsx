@@ -90,7 +90,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 			)[0],
 			posts: posts?.data,
 		},
-		revalidate: 1800,
+		revalidate: 60,
 	};
 };
 

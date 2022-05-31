@@ -50,7 +50,7 @@ export const getStaticProps: GetStaticProps = async () => {
 			doctors: doctors.data,
 			posts: posts.data,
 		},
-		revalidate: 1800, // 30 mins
+		revalidate: 60,
 	};
 };
 
