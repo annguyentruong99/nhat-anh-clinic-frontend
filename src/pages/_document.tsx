@@ -1,5 +1,4 @@
 import React from "react";
-import Script from "next/script";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import createCache from "@emotion/cache";
 import palette from "src/theme/palette";
@@ -112,20 +111,23 @@ export default class CustomDocument extends Document {
 
 					{process.env.NODE_ENV === "production" && (
 						<>
-							<Script
+							<script
+								async
 								src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-								strategy='afterInteractive'
 							/>
-							<Script id='google-analytics' strategy='afterInteractive'>
-								{`
-									window.dataLayer = window.dataLayer || [];
-									function gtag(){dataLayer.push(arguments);}
-									gtag('js', new Date());
-									gtag('config', '${GA_TRACKING_ID}', {
-										page_path: window.location.pathname,
-									});
-								`}
-							</Script>
+							<script
+								// eslint-disable-next-line react/no-danger
+								dangerouslySetInnerHTML={{
+									__html: `
+										window.dataLayer = window.dataLayer || [];
+										function gtag(){dataLayer.push(arguments);}
+										gtag('js', new Date());
+										gtag('config', '${GA_TRACKING_ID}', {
+											page_path: window.location.pathname,
+										});
+									`,
+								}}
+							/>
 						</>
 					)}
 				</Head>
