@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 			)[0].attributes,
 			services: services?.data,
 		},
-		revalidate: 1800,
+		revalidate: 60,
 	};
 };
 
